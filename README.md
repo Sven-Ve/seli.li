@@ -1,1 +1,1 @@
-# seli.li
+# seli.li - Searchable Link List
