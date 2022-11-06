@@ -6,8 +6,10 @@
         "@fortawesome/fontawesome-free": "^6.2.0",
         "@hotwired/stimulus": "^3.0.0",
         "@popperjs/core": "^2.11.6",
+        "@svc/log-bundle": "file:vendor/svc/log-bundle/assets",
         "@svc/util-bundle": "file:vendor/svc/util-bundle/assets",
         "@symfony/stimulus-bridge": "^3.2.0",
+        "@symfony/ux-autocomplete": "file:vendor/symfony/ux-autocomplete/assets",
         "@symfony/webpack-encore": "^4.0.0",
         "bootstrap": "^5.2.2",
         "core-js": "^3.23.0",
@@ -15,6 +17,7 @@
         "sass": "^1.56.0",
         "sass-loader": "^13.0.0",
         "sweetalert2": ">=11",
+        "tom-select": "^2.0.1",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
         "webpack-notifier": "^1.15.0"

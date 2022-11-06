@@ -1,5 +1,11 @@
 {
     "controllers": {
+        "@svc/log-bundle": {
+            "view": {
+                "enabled": true,
+                "fetch": "lazy"
+            }
+        },
         "@svc/util-bundle": {
             "clipboard": {
                 "enabled": true,
@@ -32,6 +38,15 @@
             "modal": {
                 "enabled": true,
                 "fetch": "lazy"
+            }
+        },
+        "@symfony/ux-autocomplete": {
+            "autocomplete": {
+                "enabled": true,
+                "fetch": "eager",
+                "autoimport": {
+                    "tom-select/dist/css/tom-select.default.css": true
+                }
             }
         }
     },

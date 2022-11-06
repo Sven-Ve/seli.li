@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Edit Profile{% endtrans %}{% endblock %}
+
+{% block body %}
+<div class='form-md'>
+  <h2>{% trans %}Edit Profile{% endtrans %}</h2>
+  <br />
+
+  {{ form(form) }}
+
+  {% include('profile/_delete_form.html.twig') %}
+  <a href="{{ path('svc_profile_change_pw_start') }}">{% trans %}Change password{% endtrans %}</a> |
+  <a href="{{ path('svc_profile_change_mail_start') }}">{% trans %}Change mail{% endtrans %}</a> |
+</div>
+{% endblock %}

@@ -13,135 +13,180 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+  #[ORM\Id]
+  #[ORM\GeneratedValue]
+  #[ORM\Column]
+  private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
-    private ?string $email = null;
+  #[ORM\Column(length: 180, unique: true)]
+  private ?string $email = null;
 
-    #[ORM\Column]
-    private array $roles = [];
+  #[ORM\Column]
+  private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
-    #[ORM\Column]
-    private ?string $password = null;
+  /**
+   * @var string The hashed password
+   */
+  #[ORM\Column]
+  private ?string $password = null;
 
-    #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
+  #[ORM\Column(type: 'boolean')]
+  private $isVerified = false;
 
-    #[ORM\Column(length: 100)]
-    private ?string $firstName = null;
+  #[ORM\Column(length: 100)]
+  private ?string $firstName = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $lastName = null;
+  #[ORM\Column(length: 100)]
+  private ?string $lastName = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+  #[ORM\Column(length: 3)]
+  private ?string $country = null;
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
+  #[ORM\Column(options: ['default' => false])]
+  private bool $isBlocked = false;
 
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
+  #[ORM\Column(length: 100, nullable: true)]
+  private ?string $blockReason = null;
 
-        return $this;
-    }
+  public function getId(): ?int
+  {
+    return $this->id;
+  }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
+  public function getEmail(): ?string
+  {
+    return $this->email;
+  }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+  public function setEmail(string $email): self
+  {
+    $this->email = $email;
 
-        return array_unique($roles);
-    }
+    return $this;
+  }
 
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
+  /**
+   * A visual identifier that represents this user.
+   *
+   * @see UserInterface
+   */
+  public function getUserIdentifier(): string
+  {
+    return (string)$this->email;
+  }
 
-        return $this;
-    }
+  /**
+   * @see UserInterface
+   */
+  public function getRoles(): array
+  {
+    $roles = $this->roles;
+    // guarantee every user at least has ROLE_USER
+    $roles[] = 'ROLE_USER';
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
+    return array_unique($roles);
+  }
 
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
+  public function setRoles(array $roles): self
+  {
+    $this->roles = $roles;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
+  /**
+   * @see PasswordAuthenticatedUserInterface
+   */
+  public function getPassword(): string
+  {
+    return $this->password;
+  }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
+  public function setPassword(string $password): self
+  {
+    $this->password = $password;
 
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
+    return $this;
+  }
 
-        return $this;
-    }
+  /**
+   * @see UserInterface
+   */
+  public function eraseCredentials()
+  {
+    // If you store any temporary, sensitive data on the user, clear it here
+    // $this->plainPassword = null;
+  }
 
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
+  public function isVerified(): bool
+  {
+    return $this->isVerified;
+  }
 
-    public function setFirstName(string $firstName): self
-    {
-        $this->firstName = $firstName;
+  public function setIsVerified(bool $isVerified): self
+  {
+    $this->isVerified = $isVerified;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
+  public function getFirstName(): ?string
+  {
+    return $this->firstName;
+  }
 
-    public function setLastName(string $lastName): self
-    {
-        $this->lastName = $lastName;
+  public function setFirstName(string $firstName): self
+  {
+    $this->firstName = $firstName;
 
-        return $this;
-    }
+    return $this;
+  }
+
+  public function getLastName(): ?string
+  {
+    return $this->lastName;
+  }
+
+  public function setLastName(string $lastName): self
+  {
+    $this->lastName = $lastName;
+
+    return $this;
+  }
+
+  public function getCountry(): ?string
+  {
+    return $this->country;
+  }
+
+  public function setCountry(string $country): self
+  {
+    $this->country = $country;
+
+    return $this;
+  }
+
+  public function isBlocked(): ?bool
+  {
+    return $this->isBlocked;
+  }
+
+  public function setIsBlocked(bool $isBlocked): self
+  {
+    $this->isBlocked = $isBlocked;
+
+    return $this;
+  }
+
+  public function getBlockReason(): ?string
+  {
+      return $this->blockReason;
+  }
+
+  public function setBlockReason(?string $blockReason): self
+  {
+      $this->blockReason = $blockReason;
+
+      return $this;
+  }
 }

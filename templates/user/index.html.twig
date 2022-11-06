@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% trans %}User index{% endtrans %}
+{% endblock %}
+
+{% block body %}
+	<h1>{% trans %}Users{% endtrans %}</h1>
+
+  <div class='table-responsive'>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>{% trans %}Email{% endtrans %}</th>
+          <th>{% trans %}Firstname{% endtrans %}</th>
+          <th>{% trans %}Lastname{% endtrans %}</th>
+          <th>{% trans %}Roles{% endtrans %}</th>
+          <th>{% trans %}Is blocked{% endtrans %}</th>
+          <th>{% trans %}Is verified{% endtrans %}</th>
+          <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.email }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            <td {{ user.isBlocked ? "style='background: #ff0000; color: #ffffff'"}}>{{ user.isBlocked ? 'Yes' | trans : 'No' | trans }}</td>
+            <td>{{ user.isVerified ? 'Yes' | trans : 'No' | trans }}</td>
+            <td>
+              <a href="{{ path('user_edit', {'id': user.id}) }}">{% trans %}Edit{% endtrans %}</a>
+              {% if is_granted('ROLE_ALLOWED_TO_SWITCH') and app.user.id != user.id %}
+                | <a href="{{ path('home_impers', {'id' : user.id}) }}">{% trans %}Impersonation{% endtrans %}</a>
+              {% endif %}
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6">{% trans %}no records found{% endtrans %}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,6 +1,9 @@
 svc_contactform:
+    # Enable captcha for contact form?
+    enable_captcha:     true
+    # Enable sending a copy of the contact request to me too?
+    enable_copy_to_me:  true
     # Email adress for contact mails
-    contact_mail:         dev@sv-systems.com
-
-    # Which route should by called after amil sent
-    route_after_send:     index
+    contact_mail:       admin@shorter.li
+    # Which route should by called after mail sent
+    route_after_send:   home

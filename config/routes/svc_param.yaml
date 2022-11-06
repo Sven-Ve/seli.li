@@ -1,0 +1,3 @@
+_svc_param:
+    resource: '@SvcParamBundle/config/routes.yaml'
+    prefix: /admin/svc-param/

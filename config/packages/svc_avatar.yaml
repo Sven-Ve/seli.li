@@ -1,0 +1,13 @@
+svc_avatar:
+
+    # Hex color for the font, without the hash (#)
+    fontcolor:            007bff
+
+    # Hex color for the image background, without the hash (#). Default: random
+    backgroundcolor:      fff
+
+    # Boolean specifying if the returned image should be a circle. Default: false
+    rounded:              true
+
+    # Boolean specifying if the returned letters should use a bold font. Default: false
+    bold:                 true

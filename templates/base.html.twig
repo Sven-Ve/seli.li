@@ -35,12 +35,12 @@
 
 						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and not app.user.isBlocked %}
 							<li class="nav-item">
-								<a class="nav-link active" href="{{ path('redirects_index') }}">
+								<a class="nav-link active" href="{{ path('home') }}">
 									<i class="fas fa-directions"></i>
 									{% trans %}Redirects{% endtrans %}</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" href="{{ path('category_index') }}">
+								<a class="nav-link active" href="{{ path('home') }}">
 								  <i class="fas fa-layer-group"></i>
 									{% trans %}Categories{% endtrans %}</a>
 							</li>
@@ -52,30 +52,34 @@
 						{% if is_granted('ROLE_USER') %}
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle active" href="#" id="navbarUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{ avatar_img(app.user.nickname, size=28) }}
+                  {{ avatar_img(app.user.firstName ~ " " ~ app.user.lastName, size=28) }}
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarUser">
-                  <p class="dropdown-item">{% trans %}Welcome{% endtrans %}, {{ app.user.nickname }}</p>
+                  <p class="dropdown-item">{% trans %}Welcome{% endtrans %}, {{ app.user.firstName }}</p>
 									<div class="dropdown-divider"></div>
-
 									<a class="dropdown-item" href="{{ path('profile') }}">
 										<i class="fas fa-address-card"></i>
 										{% trans %}Profile{% endtrans %}
                   </a>
+									{#
 									<a class="dropdown-item" href="{{ path('svc_totp_manage') }}">
 										<i class="fa-solid fa-shield"></i>
 										{% trans %}Manage 2FA{% endtrans %}
                   </a>
+									#}
 									{% if is_granted('ROLE_ADMIN') %}
+										{#
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="{{ path('eadmin') }}">
 											<i class="fa-solid fa-toolbox"></i>
 											{% trans %}EasyAdmin{% endtrans %}
 										</a>
+										#}
 										<a class="dropdown-item" href="{{ path('user_index') }}">
 											<i class="fas fa-user-friends"></i>
 											{% trans %}Users{% endtrans %}
                     </a>
+										{#
 										<a class="dropdown-item" href="{{ path('svc_totp_user_admin') }}">
 											<i class="fa-solid fa-folder-minus"></i>
 											{% trans %}Admin 2FA{% endtrans %}
@@ -84,6 +88,7 @@
 											<i class="fas fa-cog"></i>
 											{% trans %}Parameter{% endtrans %}
                     </a>
+										#}
 										<a class="dropdown-item" href="{{ path('svc_log_viewer_view') }}">
 											<i class="fas fa-binoculars"></i>
 											{% trans %}Log viewer{% endtrans %}
@@ -93,10 +98,12 @@
 											{% trans %}Info{% endtrans %}
                     </a>
 									{% endif %}
+									{#
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{ path('about') }}">
 										<i class="fas fa-info-circle"></i>
 										{% trans %}About{% endtrans %}</a>
+#}
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{ path('app_logout') }}">
 										<i class="fas fa-sign-out-alt"></i>
@@ -128,17 +135,6 @@
 							<a class="nav-link active" href="{{ path('svc_contact_form') }}">
 								<i class="fas fa-envelope-square"></i>
 								{% trans %}Contact{% endtrans %}</a>
-						</li>
-
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle active" href="#" id="navbarLang" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-globe"></i>
-								{{ app.request.locale | upper }}
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarLang">
-								<a class="dropdown-item" href="{{ path('home', {_locale: 'de'}) }}">DE</a>
-								<a class="dropdown-item" href="{{ path('home', {_locale: 'en'}) }}">EN</a>
-							</div>
 						</li>
 
 					</ul>

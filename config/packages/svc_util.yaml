@@ -1,7 +1,8 @@
-# Default configuration for "SvcUtilBundle"
 svc_util:
     mailer:
         # Default sender mail address
-        mail_address:         dev@sv-systems.com
+        mail_address:         admin@shorter.li
         # Default sender name
-        mail_name:            'Test User'
+        mail_name:            shorter.li Admin
+ 
+

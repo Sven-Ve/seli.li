@@ -1,0 +1,3 @@
+_svc_profile:
+    resource: '@SvcProfileBundle/config/routes.yaml'
+    prefix: /svc/profile/

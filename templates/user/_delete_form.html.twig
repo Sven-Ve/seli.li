@@ -1,0 +1,25 @@
+{% if user.id != app.user.id %}
+<form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
+  {{ stimulus_controller('svc--util-bundle--submit-confirm', {
+    title: 'Remove this user?' | trans,
+    icon: 'warning',
+    confirmButtonText: 'Yes, remove it' | trans,
+    cancelButtonText: 'Cancel' | trans
+  }) }}
+  data-action="svc--util-bundle--submit-confirm#onSubmit"
+>
+    <input type="hidden" name="_method" value="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+    <span class="float-end">&nbsp;&nbsp;</span>
+    <button class="btn btn-danger float-end">{% trans %}Delete{% endtrans %}</button>
+</form>
+{% else %}
+  <span class="float-end">&nbsp;&nbsp;</span>
+  <button class="btn btn-danger float-end"
+    {{ stimulus_controller('svc--util-bundle--alert', {
+      title: 'Error' | trans,
+      text: "You can't delete yourself." | trans,
+      }) }}
+  data-action="svc--util-bundle--alert#onSubmit"
+  >{% trans %}Delete{% endtrans %}</button>
+{% endif %}

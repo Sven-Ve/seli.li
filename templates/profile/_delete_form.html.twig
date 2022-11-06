@@ -1,0 +1,12 @@
+<form method="post" action="{{ path('profile_delete') }}"
+  {{ stimulus_controller('svc--util-bundle--submit-confirm', {
+    title: 'Delete yourself?' | trans,
+    icon: 'warning',
+    text: 'All your data and logs will also be deleted' | trans,
+    confirmButtonText: 'Yes, delete me' | trans,
+    cancelButtonText: 'Cancel' | trans
+  }) }}
+      data-action="svc--util-bundle--submit-confirm#onSubmit">
+  <input type="hidden" name="_method" value="POST">
+  <button class="btn btn-link btn-danger float-end">{% trans %}Delete{% endtrans %}</button>
+</form>
