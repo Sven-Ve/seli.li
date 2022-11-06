@@ -1,0 +1,3 @@
+_svc_contactform:
+    resource: '@SvcContactformBundle/config/routes.yaml'
+    prefix: /svc-contactform/{_locale}

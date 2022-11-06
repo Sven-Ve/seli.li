@@ -1,0 +1,26 @@
+@import '~bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import './layout/_label';
+@import './layout/_form';
+@import './layout/_footer';
+@import './layout/modal';
+@import './layout/svc-contactform';
+
+
+.aside-collapsed {
+  padding: 0 15px;
+}
+
+.component-light {
+  border: 1px solid #efefee;
+  box-shadow: 0 0 7px 4px #efefee;
+  border-radius: 5px;
+}
+
+.component-light ul li a:hover {
+  background: #add8e6;
+}
+.component-light ul li a.selected {
+  background: #efefee;
+}

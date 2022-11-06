@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="{{ asset('build/images/favicon.ico') }}">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+
+		{% block css %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block js_header %}{% endblock %}
+	</head>
+	<body class="d-flex flex-column h-100">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary"
+      {{ is_granted('IS_IMPERSONATOR') ? 'style="background-color: red !important"' }}
+    >
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{ path('home') }}">{{ app_name }}</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav container-fluid">
+						<li class="nav-item">
+							<a class="nav-link active" href="{{ path('home') }}">
+								<i class="fas fa-home"></i>
+								Home</a>
+						</li>
+
+						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and not app.user.isBlocked %}
+							<li class="nav-item">
+								<a class="nav-link active" href="{{ path('redirects_index') }}">
+									<i class="fas fa-directions"></i>
+									{% trans %}Redirects{% endtrans %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="{{ path('category_index') }}">
+								  <i class="fas fa-layer-group"></i>
+									{% trans %}Categories{% endtrans %}</a>
+							</li>
+						{% endif %}
+					</ul>
+
+					<ul class="navbar-nav container-fluid justify-content-end">
+
+						{% if is_granted('ROLE_USER') %}
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle active" href="#" id="navbarUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ avatar_img(app.user.nickname, size=28) }}
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarUser">
+                  <p class="dropdown-item">{% trans %}Welcome{% endtrans %}, {{ app.user.nickname }}</p>
+									<div class="dropdown-divider"></div>
+
+									<a class="dropdown-item" href="{{ path('profile') }}">
+										<i class="fas fa-address-card"></i>
+										{% trans %}Profile{% endtrans %}
+                  </a>
+									<a class="dropdown-item" href="{{ path('svc_totp_manage') }}">
+										<i class="fa-solid fa-shield"></i>
+										{% trans %}Manage 2FA{% endtrans %}
+                  </a>
+									{% if is_granted('ROLE_ADMIN') %}
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="{{ path('eadmin') }}">
+											<i class="fa-solid fa-toolbox"></i>
+											{% trans %}EasyAdmin{% endtrans %}
+										</a>
+										<a class="dropdown-item" href="{{ path('user_index') }}">
+											<i class="fas fa-user-friends"></i>
+											{% trans %}Users{% endtrans %}
+                    </a>
+										<a class="dropdown-item" href="{{ path('svc_totp_user_admin') }}">
+											<i class="fa-solid fa-folder-minus"></i>
+											{% trans %}Admin 2FA{% endtrans %}
+                    </a>
+										<a class="dropdown-item" href="{{ path('svc_param_index') }}">
+											<i class="fas fa-cog"></i>
+											{% trans %}Parameter{% endtrans %}
+                    </a>
+										<a class="dropdown-item" href="{{ path('svc_log_viewer_view') }}">
+											<i class="fas fa-binoculars"></i>
+											{% trans %}Log viewer{% endtrans %}
+                    </a>
+										<a class="dropdown-item" href="{{ path('svc_envinfo_info') }}">
+											<i class="fas fa-sitemap"></i>
+											{% trans %}Info{% endtrans %}
+                    </a>
+									{% endif %}
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="{{ path('about') }}">
+										<i class="fas fa-info-circle"></i>
+										{% trans %}About{% endtrans %}</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="{{ path('app_logout') }}">
+										<i class="fas fa-sign-out-alt"></i>
+										{% trans %}Logout{% endtrans %}
+                  </a>
+                  {% if is_granted('IS_IMPERSONATOR') %}
+                    <a class="dropdown-item" href="{{ path('home_impers') }}">
+                      <i class="fa-solid fa-person-running"></i>
+                      {% trans %}Exit Impersonation{% endtrans %}
+                    </a>
+                  {% endif %}
+								</div>
+							</li>
+
+						{% else %}
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">
+									<i class="fas fa-sign-in-alt"></i>
+									{% trans %}Login{% endtrans %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">
+									<i class="fas fa-file-signature"></i>
+									{% trans %}Register{% endtrans %}</a>
+							</li>
+						{% endif %}
+
+						<li class="nav-item">
+							<a class="nav-link active" href="{{ path('svc_contact_form') }}">
+								<i class="fas fa-envelope-square"></i>
+								{% trans %}Contact{% endtrans %}</a>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle active" href="#" id="navbarLang" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-globe"></i>
+								{{ app.request.locale | upper }}
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarLang">
+								<a class="dropdown-item" href="{{ path('home', {_locale: 'de'}) }}">DE</a>
+								<a class="dropdown-item" href="{{ path('home', {_locale: 'en'}) }}">EN</a>
+							</div>
+						</li>
+
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+		{# read and display all flash messages #}
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+					{{ message | nl2br }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			{% endfor %}
+		{% endfor %}
+
+		<div class="container-fluid">
+			<br/>
+			{% block body %}{% endblock %}
+		</div>
+
+
+		<footer class="footer mt-auto py-2">
+			<small>
+				<small>
+					&nbsp;&nbsp;<a href="{{ path("impressum") }}">Impressum</a>&nbsp;&nbsp; |
+					&nbsp;&nbsp;<a href="{{ path("dataprotection") }}">Datenschutzerklärung</a>&nbsp;&nbsp; |
+					&nbsp;&nbsp;<a href="{{ path("acceptableUse") }}">{% trans %}Acceptable Use Policy{% endtrans %}</a>&nbsp;&nbsp; |
+					&nbsp;&nbsp;<span class="text-muted">{% include "_version.html.twig" %}</span>
+				</small>
+			</small>
+		</footer>
+
+		{% block javascript %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</body>
+</html>

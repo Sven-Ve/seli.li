@@ -1,0 +1,39 @@
+{
+    "controllers": {
+        "@svc/util-bundle": {
+            "clipboard": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "mclipboard": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "alert": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "submit-confirm": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "wysiwyg": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "show-password": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "reload-content": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "modal": {
+                "enabled": true,
+                "fetch": "lazy"
+            }
+        }
+    },
+    "entrypoints": []
+}
