@@ -72,7 +72,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
    */
   public function getUserIdentifier(): string
   {
-    return (string)$this->email;
+    return (string) $this->email;
   }
 
   /**
@@ -180,13 +180,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
   public function getBlockReason(): ?string
   {
-      return $this->blockReason;
+    return $this->blockReason;
   }
 
   public function setBlockReason(?string $blockReason): self
   {
-      $this->blockReason = $blockReason;
+    $this->blockReason = $blockReason;
 
-      return $this;
+    return $this;
   }
 }

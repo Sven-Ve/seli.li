@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Form\ProfileType;
 use App\Service\UserHelper;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,7 +37,7 @@ class ProfileController extends _BaseController
     $user = $this->getUser();
     try {
       $delAllowed = $userHelper->userDeleteAllowed($user);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->addFlash('warning', $e->getMessage());
 
       return $this->redirectToRoute('profile');
