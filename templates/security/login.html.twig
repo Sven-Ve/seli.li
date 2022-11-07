@@ -1,42 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{% trans %}Login{% endtrans %}{% endblock %}
+
 
 {% block body %}
-<form method="post">
+  <form method="post" class="form-small" id="loginForm">
     {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+      <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
+      <div class="mb-3">
+        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+      </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <h1 class="h3 mb-3 font-weight-normal">{% trans %}Please sign in{% endtrans %}</h1>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
+    <div class="form-label-group form-floating">
+      <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+             placeholder="Email" required autofocus>
+      <label for="inputEmail">{% trans %}Email{% endtrans %}</label>
+    </div>
+
+    <div class="form-label-group form-floating"
+      {{ stimulus_controller('svc--util-bundle--show-password',{
+        showText: 'Show password' | trans,
+        hideText: 'Hide password' | trans
+      }) }}
     >
+      <input type="password" name="password" id="inputPassword" class="form-control" required
+             placeholder="{% trans %}Password{% endtrans %}" data-svc--util-bundle--show-password-target="passwordFld">
+      <label for="inputPassword">{% trans %}Password{% endtrans %}</label>
+      <i class="fas fa-eye" data-action="click->svc--util-bundle--show-password#toogleVisibility"
+         {{ stimulus_target('svc--util-bundle--show-password', 'toggleBtn') }}
+         title='{% trans %}Show password{% endtrans %}'>
+      </i>
+    </div>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" name="_remember_me"> {% trans %}Remember me{% endtrans %}</label>
+    </div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+    <div class="d-grid">
+      <button class="btn btn-primary g-recaptcha" type="submit" data-sitekey="6Le1YXcaAAAAAJUBph68GZrG5BQsWhuyn07ScrO2"
+              data-callback='onSubmit'
+              data-action='login_{{ app.environment }}'>{% trans %}Sign in{% endtrans %}</button>
+    </div>
+
+    <br/>
+    <a href="{{ path('app_forgot_password_request') }}">{% trans %}Forgot password{% endtrans %}</a>
+  </form>
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+  function onSubmit(token) {
+    document.getElementById("loginForm").submit();
+  }
+</script>
 {% endblock %}

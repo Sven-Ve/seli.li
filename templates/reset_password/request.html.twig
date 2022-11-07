@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Reset your password{% endtrans %}{% endblock %}
+
+{% block body %}
+  <div class='form-small'>
+    <h1 class="h3 mb-3 font-weight-normal">{% trans %}Reset your password{% endtrans %}</h1>
+
+    {{ form_start(requestForm) }}
+    {{ form_row(requestForm.email) }}
+    <div>
+      <small>
+        {% trans %}Enter your email address and we will send you a link to reset your password.{% endtrans %}
+      </small>
+    </div>
+
+    <br/>
+    <button class="btn btn-lg btn-primary btn-block">{% trans %}Send password reset email{% endtrans %}</button>
+    {{ form_end(requestForm) }}
+  </div>
+{% endblock %}
