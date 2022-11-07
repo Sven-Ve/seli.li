@@ -9,7 +9,7 @@ svc_log:
     enable_source_type:   true
 
     # Class of your one data provider to get info about sourceType and sourceID, see documentation
-    #data_provider: App\Service\LogDataProvider
+    data_provider: App\Service\LogDataProvider
 
     # Should the user id and name recorded? Please set to true only if this is allowed in your environment (personal data...)
     enable_user_saving: true

@@ -1,0 +1,7 @@
+svc_totp:
+
+    # Class to call for logging function. See doc for more information
+    loggingClass:         App\Service\TotpLogger
+
+    # Is "Forgot 2FA" functionality enabled?
+    enableForgot2FA: true

@@ -26,12 +26,19 @@ security:
       switch_user: true
       user_checker: App\Security\UserChecker
       login_throttling: true
+      two_factor:
+        auth_form_path: 2fa_login
+        check_path: 2fa_login_check
+        enable_csrf: true
 
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
   access_control:
-  # - { path: ^/admin, roles: ROLE_ADMIN }
-  # - { path: ^/profile, roles: ROLE_USER }
+    - { path: ^/logout, role: PUBLIC_ACCESS }
+    - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
+    - { path: ^/mfa/.*/forgot, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
   security:

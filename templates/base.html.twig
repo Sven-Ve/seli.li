@@ -61,12 +61,10 @@
 										<i class="fas fa-address-card"></i>
 										{% trans %}Profile{% endtrans %}
                   </a>
-									{#
 									<a class="dropdown-item" href="{{ path('svc_totp_manage') }}">
 										<i class="fa-solid fa-shield"></i>
 										{% trans %}Manage 2FA{% endtrans %}
                   </a>
-									#}
 									{% if is_granted('ROLE_ADMIN') %}
 										{#
 										<div class="dropdown-divider"></div>
@@ -79,12 +77,10 @@
 											<i class="fas fa-user-friends"></i>
 											{% trans %}Users{% endtrans %}
                     </a>
-										{#
 										<a class="dropdown-item" href="{{ path('svc_totp_user_admin') }}">
 											<i class="fa-solid fa-folder-minus"></i>
 											{% trans %}Admin 2FA{% endtrans %}
                     </a>
-										#}
 										<a class="dropdown-item" href="{{ path('svc_param_index') }}">
 											<i class="fas fa-cog"></i>
 											{% trans %}Parameter{% endtrans %}

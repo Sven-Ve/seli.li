@@ -1,0 +1,17 @@
+# See the configuration reference at https://symfony.com/bundles/SchebTwoFactorBundle/6.x/configuration.html
+scheb_two_factor:
+    security_tokens:
+        - Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken
+        - Symfony\Component\Security\Http\Authenticator\Token\PostAuthenticationToken
+
+    totp:
+        enabled: true
+        issuer: 'seli.li'
+        template: "@SvcTotp/totp/enterTotp.html.twig"
+
+    trusted_device:
+        enabled: true
+        extend_lifetime: true
+
+    backup_codes:
+        enabled: true

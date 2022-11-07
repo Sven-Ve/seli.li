@@ -35,6 +35,9 @@
             "migrations/.gitignore"
         ]
     },
+    "endroid/qr-code-bundle": {
+        "version": "4.1.1"
+    },
     "excelwebzone/recaptcha-bundle": {
         "version": "1.5",
         "recipe": {
@@ -58,6 +61,19 @@
         },
         "files": [
             "config/packages/google_recaptcha.yaml"
+        ]
+    },
+    "scheb/2fa-bundle": {
+        "version": "6.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "6.0",
+            "ref": "1e6f68089146853a790b5da9946fc5974f6fcd49"
+        },
+        "files": [
+            "config/packages/scheb_2fa.yaml",
+            "config/routes/scheb_2fa.yaml"
         ]
     },
     "sensio/framework-extra-bundle": {
@@ -106,6 +122,9 @@
     },
     "svc/profile-bundle": {
         "version": "4.0.2"
+    },
+    "svc/totp-bundle": {
+        "version": "4.0.1"
     },
     "svc/util-bundle": {
         "version": "4.0",
