@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -53,6 +55,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
   #[ORM\Column(length: 100, nullable: true)]
   private ?string $blockReason = null;
+
+  #[ORM\OneToMany(mappedBy: 'user', targetEntity: Category::class, orphanRemoval: true)]
+  private Collection $categories;
+
+  #[ORM\OneToMany(mappedBy: 'user', targetEntity: Link::class, orphanRemoval: true)]
+  private Collection $links;
+
+  public function __construct()
+  {
+      $this->categories = new ArrayCollection();
+      $this->links = new ArrayCollection();
+  }
 
   public function getId(): ?int
   {
@@ -194,5 +208,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     $this->blockReason = $blockReason;
 
     return $this;
+  }
+
+  /**
+   * @return Collection<int, Category>
+   */
+  public function getCategories(): Collection
+  {
+      return $this->categories;
+  }
+
+  public function addCategory(Category $category): self
+  {
+      if (!$this->categories->contains($category)) {
+          $this->categories->add($category);
+          $category->setUser($this);
+      }
+
+      return $this;
+  }
+
+  public function removeCategory(Category $category): self
+  {
+      if ($this->categories->removeElement($category)) {
+          // set the owning side to null (unless already changed)
+          if ($category->getUser() === $this) {
+              $category->setUser(null);
+          }
+      }
+
+      return $this;
+  }
+
+  /**
+   * @return Collection<int, Link>
+   */
+  public function getLinks(): Collection
+  {
+      return $this->links;
+  }
+
+  public function addLink(Link $link): self
+  {
+      if (!$this->links->contains($link)) {
+          $this->links->add($link);
+          $link->setUser($this);
+      }
+
+      return $this;
+  }
+
+  public function removeLink(Link $link): self
+  {
+      if ($this->links->removeElement($link)) {
+          // set the owning side to null (unless already changed)
+          if ($link->getUser() === $this) {
+              $link->setUser(null);
+          }
+      }
+
+      return $this;
   }
 }

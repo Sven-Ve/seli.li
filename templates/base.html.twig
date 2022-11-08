@@ -38,12 +38,12 @@
 
 						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and not app.user.isBlocked %}
 							<li class="nav-item">
-								<a class="nav-link active" href="{{ path('home') }}">
+								<a class="nav-link active" href="{{ path('app_link_index') }}">
 									<i class="fas fa-directions"></i>
-									{% trans %}Redirects{% endtrans %}</a>
+									{% trans %}Links{% endtrans %}</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" href="{{ path('home') }}">
+								<a class="nav-link active" href="{{ path('app_category_index') }}">
 								  <i class="fas fa-layer-group"></i>
 									{% trans %}Categories{% endtrans %}</a>
 							</li>

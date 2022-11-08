@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Link{% endblock %}
+
+{% block body %}
+    <h1>Link</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ link.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ link.name }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ link.url }}</td>
+            </tr>
+            <tr>
+                <th>IsFavorite</th>
+                <td>{{ link.isFavorite ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_link_index') }}">back to list</a>
+
+    <a href="{{ path('app_link_edit', {'id': link.id}) }}">edit</a>
+
+    {{ include('link/_delete_form.html.twig') }}
+{% endblock %}
