@@ -1,7 +1,7 @@
 parameters:
     ignoreErrors:
         - '#Call to an undefined method Symfony\\Component\\Security\\Core\\User\\UserInterface.*#'
-        - '#Parameter .* expects App\\Entity\\User\|null, .* given.#'
+        - '#Parameter .* expects App\\Entity\\User, .* given.#'
         - '#Property App\\Entity\\_DefaultSuperclass::\$.* \(DateTime\|null\) does not accept DateTimeInterface.#'
 includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon

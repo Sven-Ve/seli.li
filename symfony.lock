@@ -1,4 +1,7 @@
 {
+    "babdev/pagerfanta-bundle": {
+        "version": "v3.7.0"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -105,6 +108,9 @@
             "assets/styles/layout/_svc-contactform.scss"
         ]
     },
+    "svc/easy-deploy-bundle": {
+        "version": "v1.1.0"
+    },
     "svc/log-bundle": {
         "version": "4.2.0"
     },
@@ -138,6 +144,9 @@
             "config/packages/svc_util.yaml",
             "config/routes/svc_util.yaml"
         ]
+    },
+    "svc/versioning-bundle": {
+        "version": "3.0.1"
     },
     "symfony/console": {
         "version": "6.1",

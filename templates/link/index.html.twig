@@ -1,39 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Link index{% endblock %}
+{% block title %}
+  {% trans %}My redirects{% endtrans %}
+{% endblock %}
 
 {% block body %}
-    <h1>Link index</h1>
+  <div class="row">
+    <aside class="col-sm-4 col-md-3 col-xl-2">
+      {{ include('link/_categoriesSidebar.html.twig') }}
+    </aside>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Url</th>
-                <th>IsFavorite</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for link in links %}
-            <tr>
-                <td>{{ link.id }}</td>
-                <td>{{ link.name }}</td>
-                <td>{{ link.url }}</td>
-                <td>{{ link.isFavorite ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_link_show', {'id': link.id}) }}">show</a>
-                    <a href="{{ path('app_link_edit', {'id': link.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="col-sm-8 col-md-9 col-xl-10">
+      <div
+        {{ stimulus_controller('svc--util-bundle--reload-content', {
+          url: path('app_link_index', { ajax: 1 } ),
+          refreshAjax: 1
+        }) }}
+        {{ stimulus_action('svc--util-bundle--reload-content', 'refreshContent', 'select-category:success@window') }}
+        {{ stimulus_action('svc--util-bundle--reload-content', 'refreshContent', 'modal-form:success') }}
+        {{ stimulus_target('data-svc--util-bundle--reload-content', 'content') }}
+      >
 
-    <a href="{{ path('app_link_new') }}">Create new</a>
+        <div>
+          {{ include('link/_list.html.twig') }}
+        </div>
+
+      </div>
+    </div>
+  </div>
 {% endblock %}

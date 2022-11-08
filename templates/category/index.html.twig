@@ -1,37 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}
+  {% trans %}Categories{% endtrans %}
+{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+  <div class='form-lg'>
+    <h1>{% trans %}Categories{% endtrans %}</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>IsDefault</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.isDefault ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div
+      {{ stimulus_controller('svc--util-bundle--reload-content', {
+        url: path('category_index', { ajax: 1 } ),
+        refreshAjax: 1
+      }) }}
+      {{ stimulus_action('svc--util-bundle--reload-content', 'refreshContent', 'default-category:success') }}
+    >
 
-    <a href="{{ path('app_category_new') }}">Create new</a>
+      <div {{ stimulus_target('svc--util-bundle--reload-content', 'content') }}>
+        {{ include('category/_list.html.twig') }}
+      </div>
+
+    </div>
+    <a href="{{ path('category_new') }}" class="btn btn-sm btn-success">{% trans %}New{% endtrans %}</a>
+  </div>
 {% endblock %}

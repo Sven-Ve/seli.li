@@ -2,28 +2,48 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Link;
+use App\Repository\CategoryRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class LinkType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-            ->add('name')
-            ->add('url')
-            ->add('isFavorite')
-            ->add('user')
-            ->add('category')
-        ;
-    }
+  public function __construct(private readonly CategoryRepository $categoryRep, private readonly TokenStorageInterface $token)
+  {
+  }
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Link::class,
-        ]);
-    }
+  public function buildForm(FormBuilderInterface $builder, array $options): void
+  {
+    $builder
+      ->add('name', TextType::class, [
+        'attr' => ['autofocus' => true],
+      ])
+      ->add('url', UrlType::class, [
+        'label' => 'URL',
+        'default_protocol' => 'https',
+      ])
+      ->add('category', EntityType::class, [
+        'class' => Category::class,
+        'choices' => $this->categoryRep->getCategoryByUser($this->token->getToken()->getUser()),
+        'help' => 'Please select the category of the redirect',
+      ])
+      ->add('isFavorite', null, [
+        'label' => 'Favorite',
+        'help' => 'Is this a favorite link?',
+      ]);
+  }
+
+  public function configureOptions(OptionsResolver $resolver): void
+  {
+    $resolver->setDefaults([
+      'data_class' => Link::class,
+    ]);
+  }
 }

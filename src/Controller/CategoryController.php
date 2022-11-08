@@ -5,74 +5,102 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\CategoryHelper;
+use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/category')]
-class CategoryController extends AbstractController
+#[Route(path: '/manage/category')]
+class CategoryController extends _BaseController
 {
-    #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
-    {
-        return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
-        ]);
+  #[Route(path: '/', name: 'category_index', methods: ['GET'])]
+  public function index(CategoryRepository $categoryRepository, Request $request, CategoryHelper $categoryHelper): Response
+  {
+    $categoryHelper->getDefaultCategory($this->getUser());
+    $template = $request->query->get('ajax') ? '_list.html.twig' : 'index.html.twig';
+
+    return $this->render('category/' . $template, [
+      'categories' => $categoryRepository->getCategoryByUser($this->getUser()),
+    ]);
+  }
+
+  /**
+   * create a category.
+   */
+  #[Route(path: '/new', name: 'category_new', methods: ['GET', 'POST'])]
+  public function new(Request $request, EntityManagerInterface $entityManager): Response
+  {
+    $category = new Category($this->getUser());
+//    $category->setUser($this->getUser());
+    $form = $this->createForm(CategoryType::class, $category);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+      $entityManager->persist($category);
+      $entityManager->flush();
+
+      return $this->redirectToRoute('category_index');
     }
 
-    #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CategoryRepository $categoryRepository): Response
-    {
-        $category = new Category();
-        $form = $this->createForm(CategoryType::class, $category);
-        $form->handleRequest($request);
+    return $this->renderForm('category/new.html.twig', [
+      'category' => $category,
+      'form' => $form,
+    ]);
+  }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $categoryRepository->save($category, true);
+  /**
+   * edit a category.
+   */
+  #[Route(path: '/{id}/edit', name: 'category_edit', methods: ['GET', 'POST'])]
+  public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
+  {
+    $this->denyAccessUnlessGranted('edit', $category);
+    $form = $this->createForm(CategoryType::class, $category);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+      $entityManager->flush();
 
-            return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('category/new.html.twig', [
-            'category' => $category,
-            'form' => $form,
-        ]);
+      return $this->redirectToRoute('category_index');
     }
 
-    #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
-    {
-        return $this->render('category/show.html.twig', [
-            'category' => $category,
-        ]);
+    return $this->renderForm('category/edit.html.twig', [
+      'category' => $category,
+      'form' => $form,
+    ]);
+  }
+
+  /**
+   * Delete a category.
+   */
+  #[Route(path: '/{id}', name: 'category_delete', methods: ['POST'])]
+  public function delete(Request $request, Category $category, CategoryHelper $categoryHelper, EntityManagerInterface $entityManager): Response
+  {
+    if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
+      $this->denyAccessUnlessGranted('edit', $category);
+
+      $categoryHelper->resetToDefaultCategory($category, $this->getUser());
+      try {
+        $entityManager->remove($category);
+        $entityManager->flush();
+      } catch (Exception) {
+        $this->addFlash('danger', 'Cannot delete this category. Maybe some redirects use it?');
+      }
     }
 
-    #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
-    {
-        $form = $this->createForm(CategoryType::class, $category);
-        $form->handleRequest($request);
+    return $this->redirectToRoute('category_index');
+  }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $categoryRepository->save($category, true);
-
-            return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('category/edit.html.twig', [
-            'category' => $category,
-            'form' => $form,
-        ]);
+  /**
+   * set the default category per ajax call.
+   */
+  #[Route(path: '/setDefault/{id}', name: 'category_set_default', methods: ['GET', 'POST'])]
+  public function setDefault(Category $category, CategoryHelper $categoryHelper): Response
+  {
+    if ($categoryHelper->setDefault($category, $this->getUser())) {
+      return new Response(null, Response::HTTP_NO_CONTENT);
+    } else {
+      return new Response(null, Response::HTTP_UNPROCESSABLE_ENTITY);
     }
-
-    #[Route('/{id}', name: 'app_category_delete', methods: ['POST'])]
-    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
-            $categoryRepository->remove($category, true);
-        }
-
-        return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
-    }
+  }
 }

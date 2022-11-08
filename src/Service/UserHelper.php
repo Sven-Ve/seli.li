@@ -42,9 +42,10 @@ class UserHelper
   public function userDeleteWithAllData(User $user): bool
   {
     try {
-      foreach ($user->getRedirects() as $redirect) {
-        $this->svcLogRep->batchDelete($redirect->getId(), AppConstants::LOG_TYPE_REDIRECT);
-        $this->svcLogRep->batchDelete($redirect->getId(), AppConstants::LOG_TYPE_REDIRECT_ERROR);
+      foreach ($user->getLinks() as $link) {
+        // TODO: Constants richtig stellen, Aufruf in UserDelete und ProfileDelete aufnehmen
+        $this->svcLogRep->batchDelete($link->getId(), AppConstants::LOG_TYPE_REDIRECT);
+        $this->svcLogRep->batchDelete($link->getId(), AppConstants::LOG_TYPE_REDIRECT_ERROR);
       }
       $this->svcLogRep->batchDelete(null, null, $user->getId());
 

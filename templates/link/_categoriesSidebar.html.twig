@@ -1,0 +1,31 @@
+<div class="p-3 mb-5 component-light">
+	<h5 class="text-center">
+		{% trans %}Categories{% endtrans %}
+	</h5>
+	<ul class="nav flex-column mb4"
+      {{ stimulus_controller('select-category', {
+        'url': path('app_link_index', { ajax: 1 })
+      }) }}
+  >
+		<li class="nav-item">
+			<a class="nav-link {{ not currentCategory|default ? 'selected' }}"
+          data-action="select-category#set"
+          data-category-id="0"
+          data-select-category-target="button"
+      >
+				{% trans %}All Links{% endtrans %}
+			</a>
+		</li>
+		{% for category in categories %}
+			<li class="nav-item">
+				<a class="nav-link {{ currentCategory|default is same as category ? 'selected' }}"
+          data-action="select-category#set"
+          data-category-id="{{category.id}}"
+          data-select-category-target="button"
+        >
+					{{ category.name }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

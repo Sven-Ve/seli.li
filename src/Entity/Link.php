@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['name', 'user'], message: 'Name already exists', errorPath: 'name')]
 #[ORM\UniqueConstraint(columns: ['name', 'user_id'])]
 #[ORM\Entity(repositoryClass: LinkRepository::class)]
-class Link
+class Link extends _DefaultSuperclass
 {
   #[ORM\Id]
   #[ORM\GeneratedValue]
@@ -95,7 +95,7 @@ class Link
     return $this->isFavorite;
   }
 
-  public function setFavorite(bool $isFavorite): self
+  public function setIsFavorite(bool $isFavorite): self
   {
     $this->isFavorite = $isFavorite;
 

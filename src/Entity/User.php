@@ -6,13 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Scheb\TwoFactorBundle\Model\BackupCodeInterface;
 use Scheb\TwoFactorBundle\Model\Totp\TwoFactorInterface;
 use Scheb\TwoFactorBundle\Model\TrustedDeviceInterface;
 use Svc\TotpBundle\Service\_TotpTrait;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -64,8 +64,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
   public function __construct()
   {
-      $this->categories = new ArrayCollection();
-      $this->links = new ArrayCollection();
+    $this->categories = new ArrayCollection();
+    $this->links = new ArrayCollection();
   }
 
   public function getId(): ?int
@@ -215,19 +215,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
    */
   public function getCategories(): Collection
   {
-      return $this->categories;
+    return $this->categories;
   }
 
   public function addCategory(Category $category): self
   {
-      if (!$this->categories->contains($category)) {
-          $this->categories->add($category);
-          $category->setUser($this);
-      }
+    if (!$this->categories->contains($category)) {
+      $this->categories->add($category);
+  //        $category->setUser($this);
+    }
 
-      return $this;
+    return $this;
   }
 
+  /*
   public function removeCategory(Category $category): self
   {
       if ($this->categories->removeElement($category)) {
@@ -239,25 +240,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
       return $this;
   }
+*/
 
   /**
    * @return Collection<int, Link>
    */
   public function getLinks(): Collection
   {
-      return $this->links;
+    return $this->links;
   }
 
   public function addLink(Link $link): self
   {
-      if (!$this->links->contains($link)) {
-          $this->links->add($link);
-          $link->setUser($this);
-      }
+    if (!$this->links->contains($link)) {
+      $this->links->add($link);
+      $link->setUser($this);
+    }
 
-      return $this;
+    return $this;
   }
 
+  /*
   public function removeLink(Link $link): self
   {
       if ($this->links->removeElement($link)) {
@@ -269,4 +272,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
       return $this;
   }
+  */
 }

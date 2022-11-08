@@ -17,6 +17,7 @@
         "regenerator-runtime": "^0.13.9",
         "sass": "^1.56.0",
         "sass-loader": "^13.0.0",
+        "stimulus-use": "^0.51.0",
         "sweetalert2": ">=11",
         "tom-select": "^2.0.1",
         "webpack": "^5.74.0",

@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Repository\RedirectsRepository;
 use App\Repository\UserRepository;
 use Svc\LogBundle\DataProvider\GeneralDataProvider;
 
@@ -82,8 +81,6 @@ class LogDataProvider extends GeneralDataProvider
 
   /**
    * read all redirect, store it in an array.
-   *
-   * @return void
    */
   /*
   private function initRedirectSourceIDs(): void
@@ -102,8 +99,6 @@ class LogDataProvider extends GeneralDataProvider
 
   /**
    * read all redirect, store it in an array.
-   *
-   * @return void
    */
   private function initUserSourceIDs(): void
   {

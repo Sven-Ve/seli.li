@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-between">
+  <h2 class="me-3">
+    {% if currentCategory %}
+      {% trans %}Links for category{% endtrans %}
+      {{ currentCategory.name }}
+    {% else %}
+      {% trans %}All Links{% endtrans %}
+    {% endif %}
+  </h2>
+  <a href="{{ path('app_link_new') }}" class="btn btn-sm btn-success">{% trans %}New{% endtrans %}</a>
+</div>
+
+<div class='table-responsive-md'>
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th>{% trans %}Name{% endtrans %}</th>
+      <th>{% trans %}URL{% endtrans %}</th>
+      <th>{% trans %}Category{% endtrans %}</th>
+      <th>{% trans %}Actions{% endtrans %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for link in links %}
+      <tr>
+        <td>{{ link.name }}</td>
+        <td>{{ link.url }}</td>
+        <td>{{ link.category | default('-') }}</td>
+        <td>
+          <a href="{{ path('app_link_show', {'id': link.id}) }}"
+             class='btn btn-sm btn-outline-secondary'>{% trans %}Show{% endtrans %}</a>
+          <a href="{{ path('app_link_edit', {'id': link.id}) }}"
+             class='btn btn-sm btn-outline-info'>{% trans %}Edit{% endtrans %}</a>
+          <a href="{{ link.url }}" target='_blank'
+             class='btn btn-sm btn-outline-primary'>{% trans %}Test{% endtrans %}</a>
+          <span class="d-none"
+                {{ stimulus_controller('svc--util-bundle--clipboard', {
+                  'link': link.url
+                }) }}
+              >
+                <button class='btn btn-sm btn-outline-warning'
+                        title='{% trans %}Copy link to clipboard{% endtrans %}' {{ stimulus_action('svc--util-bundle--clipboard','copy') }}>
+                  {% trans %}Copy link{% endtrans %}
+                </button>
+              </span>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="4">{% trans %}no links found{% endtrans %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if haveToPaginate %}
+  {{ pagerfanta(links, 'twig', {
+    'routeName' : 'app_link_index',
+    'routeParams': {'catId' : currentCategory.id | default(null)}
+  }) }}
+{% endif %}

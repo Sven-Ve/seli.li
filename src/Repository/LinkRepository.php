@@ -2,8 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Link;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,51 +20,51 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class LinkRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Link::class);
+  public function __construct(ManagerRegistry $registry)
+  {
+    parent::__construct($registry, Link::class);
+  }
+
+  public function save(Link $entity, bool $flush = false): void
+  {
+    $this->getEntityManager()->persist($entity);
+
+    if ($flush) {
+      $this->getEntityManager()->flush();
     }
+  }
 
-    public function save(Link $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->persist($entity);
+  public function remove(Link $entity, bool $flush = false): void
+  {
+    $this->getEntityManager()->remove($entity);
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+    if ($flush) {
+      $this->getEntityManager()->flush();
     }
+  }
 
-    public function remove(Link $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
+  private static function createUserCriteria(User $user): Criteria
+  {
+    return Criteria::create()
+      ->andWhere(Criteria::expr()->eq('user', $user));
+  }
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
+  private static function createCategoryCriteria(Category $category): Criteria
+  {
+    return Criteria::create()
+      ->andWhere(Criteria::expr()->eq('category', $category));
+  }
 
-//    /**
-//     * @return Link[] Returns an array of Link objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('l')
-//            ->andWhere('l.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('l.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+  public function qbAllLinksByUser(User $user): QueryBuilder
+  {
+    return $this->createQueryBuilder('l')
+      ->addCriteria(self::createUserCriteria($user));
+  }
 
-//    public function findOneBySomeField($value): ?Link
-//    {
-//        return $this->createQueryBuilder('l')
-//            ->andWhere('l.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+  public function qbLinksByUserAndCategory(User $user, Category $category): QueryBuilder
+  {
+    return $this->createQueryBuilder('l')
+      ->addCriteria(self::createUserCriteria($user))
+      ->addCriteria(self::createCategoryCriteria($category));
+  }
 }

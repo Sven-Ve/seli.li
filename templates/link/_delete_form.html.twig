@@ -1,4 +1,14 @@
-<form method="post" action="{{ path('app_link_delete', {'id': link.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ link.id) }}">
-    <button class="btn">Delete</button>
+<form method="post" action="{{ path('app_link_delete', {'id': link.id}) }}"
+  {{ stimulus_controller('svc--util-bundle--submit-confirm', {
+    title: 'Remove this link?' | trans,
+    icon: 'warning',
+    confirmButtonText: 'Yes, remove it' | trans,
+    cancelButtonText: 'Cancel' | trans
+  }) }}
+      data-action="svc--util-bundle--submit-confirm#onSubmit"
+>
+  <input type="hidden" name="_method" value="POST">
+  <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ link.id) }}">
+  <span class="float-end">&nbsp;&nbsp;</span>
+  <button class="btn btn-danger float-end">{% trans %}Delete{% endtrans %}</button>
 </form>
