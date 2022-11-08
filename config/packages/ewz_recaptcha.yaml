@@ -2,3 +2,12 @@
 ewz_recaptcha:
     public_key:  '%env(EWZ_RECAPTCHA_SITE_KEY)%'
     private_key: '%env(EWZ_RECAPTCHA_SECRET)%'
+    version: 3
+
+when@dev:
+    ewz_recaptcha:
+        enabled: true
+
+when@test:
+    ewz_recaptcha:
+        enabled: false

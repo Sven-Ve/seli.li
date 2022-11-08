@@ -15,6 +15,7 @@ class ProfileController extends _BaseController
   #[Route(path: '/', name: 'profile')]
   public function edit(Request $request, EntityManagerInterface $entityManager): Response
   {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $profile = $this->getUser();
     $form = $this->createForm(ProfileType::class, $profile);
     $form->handleRequest($request);
@@ -50,7 +51,7 @@ class ProfileController extends _BaseController
     }
 
     if ($userHelper->userDeleteWithAllData($user)) {
-      return $this->redirectToRoute('homeNoLocale');
+      return $this->redirectToRoute('home');
     } else {
       $this->addFlash('warning', 'Cannot delete your user.');
 

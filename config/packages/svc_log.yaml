@@ -18,7 +18,7 @@ svc_log:
     need_admin_for_view:  true
 
     # Need the user the role ROLE_ADMIN for get statistics (default yes)
-    need_admin_for_stats: false
+    need_admin_for_stats: true
 
 when@prod:
     svc_log:

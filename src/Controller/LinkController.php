@@ -13,12 +13,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/link')]
+#[Route('/manage/link')]
 class LinkController extends _BaseController
 {
   #[Route('/', name: 'app_link_index', methods: ['GET'])]
   public function index(LinkRepository $linkRep, CategoryRepository $categoryRep, Request $request): Response
   {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $currentCategory = null;
     $catId = $request->query->get('catId');
     $page = $request->query->get('page', 1);
@@ -55,6 +56,7 @@ class LinkController extends _BaseController
   #[Route('/new', name: 'app_link_new', methods: ['GET', 'POST'])]
   public function new(Request $request, LinkRepository $linkRepository, CategoryHelper $categoryHelper): Response
   {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $link = new Link();
     $link->setCategory($categoryHelper->getDefaultCategory($this->getUser()));
 
@@ -77,6 +79,7 @@ class LinkController extends _BaseController
   #[Route('/{id}', name: 'app_link_show', methods: ['GET'])]
   public function show(Link $link): Response
   {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $this->denyAccessUnlessGranted('view', $link);
 
     return $this->render('link/show.html.twig', [
@@ -87,6 +90,7 @@ class LinkController extends _BaseController
   #[Route('/{id}/edit', name: 'app_link_edit', methods: ['GET', 'POST'])]
   public function edit(Request $request, Link $link, LinkRepository $linkRepository): Response
   {
+    $this->denyAccessUnlessGranted('ROLE_USER');
     $this->denyAccessUnlessGranted('edit', $link);
     $form = $this->createForm(LinkType::class, $link);
     $form->handleRequest($request);
@@ -106,6 +110,8 @@ class LinkController extends _BaseController
   #[Route('/{id}', name: 'app_link_delete', methods: ['POST'])]
   public function delete(Request $request, Link $link, LinkRepository $linkRepository): Response
   {
+    $this->denyAccessUnlessGranted('ROLE_USER');
+    $this->denyAccessUnlessGranted('edit', $link);
     if ($this->isCsrfTokenValid('delete' . $link->getId(), $request->request->get('_token'))) {
       $linkRepository->remove($link, true);
     }

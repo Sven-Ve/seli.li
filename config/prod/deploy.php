@@ -47,7 +47,6 @@ return new class extends DefaultDeployer
   {
     $this->runRemote('killall -9 php-cgi'); // OPCache bei Hostpoint leeren
     $this->runRemote('{{ console_bin }} doctrine:schema:update --force'); // update database
-    $this->runRemote('{{ console_bin }} app:batch:warmup-cache'); // load redirects in cache
     // $this->runLocal('say "The deployment has finished."');
   }
 };
