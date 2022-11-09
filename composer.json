@@ -87,7 +87,8 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "phpstan": "php -d memory_limit=-1 vendor/bin/phpstan analyse src/ --level 5 -c .phpstan.neon"
+        "phpstan": "php -d memory_limit=-1 vendor/bin/phpstan analyse src/ --level 5 -c .phpstan.neon",
+        "test": "bin/console --env test doctrine:database:create; bin/console --env test doctrine:schema:update --force; bin/console --env=test doctrine:fixtures:load --no-interaction; php bin/phpunit --testdox"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -100,12 +101,17 @@
         }
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "phpstan/phpstan": "^1.9",
         "phpstan/phpstan-doctrine": "^1.3",
+        "phpunit/phpunit": "^9.5",
         "svc/easy-deploy-bundle": "^1.1",
         "svc/versioning-bundle": "^3.0",
+        "symfony/browser-kit": "6.1.*",
+        "symfony/css-selector": "6.1.*",
         "symfony/debug-bundle": "6.1.*",
         "symfony/maker-bundle": "^1.47",
+        "symfony/phpunit-bridge": "^6.1",
         "symfony/stopwatch": "6.1.*",
         "symfony/web-profiler-bundle": "6.1.*"
     }

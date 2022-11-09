@@ -43,7 +43,7 @@ class HomeController extends _BaseController
    * Richtlinie zur akzeptablen Nutzung.
    */
   #[Route(path: '/acceptable-use/', name: 'acceptableUse')]
-  public function acceptableUse(string $_locale): Response
+  public function acceptableUse(): Response
   {
     return $this->render('home/acceptable_use_en.html.twig');
   }
