@@ -4,6 +4,6 @@ svc_contactform:
     # Enable sending a copy of the contact request to me too?
     enable_copy_to_me:  true
     # Email adress for contact mails
-    contact_mail:       admin@shorter.li
+    contact_mail:       admin@seli.li
     # Which route should by called after mail sent
     route_after_send:   home

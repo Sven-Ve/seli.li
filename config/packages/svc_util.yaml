@@ -1,8 +1,6 @@
 svc_util:
     mailer:
         # Default sender mail address
-        mail_address:         admin@shorter.li
+        mail_address:         admin@seli.li
         # Default sender name
-        mail_name:            shorter.li Admin
- 
-
+        mail_name:            seli.li Admin

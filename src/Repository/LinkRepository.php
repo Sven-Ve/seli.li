@@ -67,4 +67,15 @@ class LinkRepository extends ServiceEntityRepository
       ->addCriteria(self::createUserCriteria($user))
       ->addCriteria(self::createCategoryCriteria($category));
   }
+
+  public function qbShowLinksByUser(User $user): QueryBuilder
+  {
+    return $this->createQueryBuilder('l')
+      ->addCriteria(self::createUserCriteria($user))
+      ->addSelect('c')
+      ->leftJoin('l.category', 'c')
+      ->addOrderBy('c.name', 'asc')
+      ->addOrderBy('l.name', 'asc')
+    ;
+  }
 }
