@@ -7,10 +7,11 @@ namespace App\Service;
  */
 class AppConstants
 {
-  final public const LOG_TYPE_REDIRECT = 1;
-  final public const LOG_TYPE_REDIRECT_ERROR = 2;
-  final public const LOG_TYPE_GENERAL = 3;
-  final public const LOG_TYPE_ANONHOME = 4; // anonymer user on homepage
+  final public const LOG_TYPE_LINK_CALLED = 1;
+  final public const LOG_TYPE_LINK_CREATED = 2;
+  final public const LOG_TYPE_LINK_CHANGED = 3;
+  final public const LOG_TYPE_LINK_DELETED = 4;
+  final public const LOG_TYPE_ANONHOME = 9; // anonymer user on homepage
 
   // user, logon, registration
   final public const LOG_TYPE_LOGIN = 10;

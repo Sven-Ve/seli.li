@@ -29,13 +29,14 @@ class LinkType extends AbstractType
         'label' => 'URL',
         'default_protocol' => 'https',
       ])
+      ->add('description')
       ->add('category', EntityType::class, [
         'class' => Category::class,
         'choices' => $this->categoryRep->getCategoryByUser($this->token->getToken()->getUser()),
-        'help' => 'Please select the category of the redirect',
+        'help' => 'Please select the category of the link',
       ])
-      ->add('isFavorite', null, [
-        'label' => 'Favorite',
+      ->add('favorite', null, [
+        'required' => false,
         'help' => 'Is this a favorite link?',
       ]);
   }

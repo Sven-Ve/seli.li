@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['name', 'user'], message: 'Name already exists', errorPath: 'name')]
 #[ORM\UniqueConstraint(columns: ['name', 'user_id'])]
 #[ORM\Entity(repositoryClass: LinkRepository::class)]
-class Link extends _DefaultSuperclass
+class Link extends _DefaultSuperclass implements \Stringable
 {
   #[ORM\Id]
   #[ORM\GeneratedValue]
@@ -23,6 +23,7 @@ class Link extends _DefaultSuperclass
   private ?string $name = null;
 
   #[Assert\NotBlank]
+  #[Assert\Length(min: 10, max: 255, minMessage: 'Your url must be at least {{ limit }} characters long', maxMessage: 'Your url cannot be longer than {{ limit }} characters')]
   #[ORM\Column(length: 255)]
   private ?string $url = null;
 
@@ -34,8 +35,11 @@ class Link extends _DefaultSuperclass
   #[ORM\JoinColumn(nullable: false)]
   private ?Category $category = null;
 
+  #[ORM\Column(length: 100, nullable: true)]
+  private ?string $description = null;
+
   #[ORM\Column]
-  private bool $isFavorite = false;
+  private bool $favorite = false;
 
   public function getId(): ?int
   {
@@ -90,15 +94,32 @@ class Link extends _DefaultSuperclass
     return $this;
   }
 
-  public function isFavorite(): bool
+  public function getDescription(): ?string
   {
-    return $this->isFavorite;
+    return $this->description;
   }
 
-  public function setIsFavorite(bool $isFavorite): self
+  public function setDescription(?string $description): self
   {
-    $this->isFavorite = $isFavorite;
+    $this->description = $description;
 
     return $this;
+  }
+
+  public function __toString()
+  {
+    return $this->name;
+  }
+
+  public function isFavorite(): bool
+  {
+      return $this->favorite;
+  }
+
+  public function setFavorite(bool $favorite): self
+  {
+      $this->favorite = $favorite;
+
+      return $this;
   }
 }

@@ -15,7 +15,7 @@
     <thead>
     <tr>
       <th>{% trans %}Name{% endtrans %}</th>
-      <th>{% trans %}URL{% endtrans %}</th>
+      <th>{% trans %}Description{% endtrans %}</th>
       <th>{% trans %}Category{% endtrans %}</th>
       <th>{% trans %}Actions{% endtrans %}</th>
     </tr>
@@ -24,7 +24,7 @@
     {% for link in links %}
       <tr>
         <td>{{ link.name }}</td>
-        <td>{{ link.url }}</td>
+        <td>{{ link.description }}</td>
         <td>{{ link.category | default('-') }}</td>
         <td>
           <a href="{{ path('app_link_show', {'id': link.id}) }}"

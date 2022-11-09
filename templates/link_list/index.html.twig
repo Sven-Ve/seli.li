@@ -10,6 +10,7 @@
   {% for link in links %}
     {% if lastCat != link.category.name %}
       {% if lastCat != '' %}
+              </ul>
             </div>
           </div>
         </div>
@@ -17,23 +18,27 @@
 
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ link.category.id }}" aria-expanded="true" aria-controls="collapseOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ link.category.id }}" aria-expanded="false" aria-controls="collapse{{ link.category.id }}">
             {{ link.category.name }}
           </button>
         </h2>
-        <div id="collapse{{ link.category.id }}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionLinks">
+        <div id="collapse{{ link.category.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ link.category.id }}" data-bs-parent="#accordionLinks">
           <div class="accordion-body">
-
-
+          <ul>
         {% set lastCat = link.category.name %}
     {% endif %}
-    {{ link.category.name }} - {{ link.name }}
-        <br/>
+            <li>
+              <a href="{{ path('link_list_call', {'id': link.id }) }}" target="_blank">{{ link.name }}</a>
+              {% if link.description %}
+                <br/><small class='text-muted'>{{ link.description }}</small>
+              {% endif %}
+            </li>
   {% endfor %}
-  </div>
-  </div>
-</div>
-</div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
   {% if haveToPaginate %}
     {{ pagerfanta(links, 'twig', {

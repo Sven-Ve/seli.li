@@ -6,9 +6,11 @@ use App\Entity\Link;
 use App\Form\LinkType;
 use App\Repository\CategoryRepository;
 use App\Repository\LinkRepository;
+use App\Service\AppConstants;
 use App\Service\CategoryHelper;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
+use Svc\LogBundle\Service\EventLog;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -54,18 +56,19 @@ class LinkController extends _BaseController
   }
 
   #[Route('/new', name: 'app_link_new', methods: ['GET', 'POST'])]
-  public function new(Request $request, LinkRepository $linkRepository, CategoryHelper $categoryHelper): Response
+  public function new(Request $request, LinkRepository $linkRepository, CategoryHelper $categoryHelper, EventLog $eventLog): Response
   {
     $this->denyAccessUnlessGranted('ROLE_USER');
     $link = new Link();
     $link->setCategory($categoryHelper->getDefaultCategory($this->getUser()));
+    $link->setUser($this->getUser());
 
     $form = $this->createForm(LinkType::class, $link);
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-      $link->setUser($this->getUser());
       $linkRepository->save($link, true);
+      $eventLog->log($link->getId(), AppConstants::LOG_TYPE_LINK_CREATED, ['level' => EventLog::LEVEL_INFO]);
 
       return $this->redirectToRoute('app_link_index', [], Response::HTTP_SEE_OTHER);
     }
@@ -88,7 +91,7 @@ class LinkController extends _BaseController
   }
 
   #[Route('/{id}/edit', name: 'app_link_edit', methods: ['GET', 'POST'])]
-  public function edit(Request $request, Link $link, LinkRepository $linkRepository): Response
+  public function edit(Request $request, Link $link, LinkRepository $linkRepository, EventLog $eventLog): Response
   {
     $this->denyAccessUnlessGranted('ROLE_USER');
     $this->denyAccessUnlessGranted('edit', $link);
@@ -97,6 +100,7 @@ class LinkController extends _BaseController
 
     if ($form->isSubmitted() && $form->isValid()) {
       $linkRepository->save($link, true);
+      $eventLog->log($link->getId(), AppConstants::LOG_TYPE_LINK_CHANGED, ['level' => EventLog::LEVEL_INFO]);
 
       return $this->redirectToRoute('app_link_index', [], Response::HTTP_SEE_OTHER);
     }
@@ -108,11 +112,12 @@ class LinkController extends _BaseController
   }
 
   #[Route('/{id}', name: 'app_link_delete', methods: ['POST'])]
-  public function delete(Request $request, Link $link, LinkRepository $linkRepository): Response
+  public function delete(Request $request, Link $link, LinkRepository $linkRepository, EventLog $eventLog): Response
   {
     $this->denyAccessUnlessGranted('ROLE_USER');
     $this->denyAccessUnlessGranted('edit', $link);
     if ($this->isCsrfTokenValid('delete' . $link->getId(), $request->request->get('_token'))) {
+      $eventLog->log($link->getId(), AppConstants::LOG_TYPE_LINK_DELETED, ['level' => EventLog::LEVEL_WARN, 'message' => 'Link deleted: ' . $link->getName()]);
       $linkRepository->remove($link, true);
     }
 

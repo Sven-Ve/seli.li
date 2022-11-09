@@ -2,12 +2,13 @@
 
 namespace App\Service;
 
+use App\Repository\LinkRepository;
 use App\Repository\UserRepository;
 use Svc\LogBundle\DataProvider\GeneralDataProvider;
 
 class LogDataProvider extends GeneralDataProvider
 {
-  public function __construct(private readonly UserRepository $userRep)
+  public function __construct(private readonly UserRepository $userRep, private LinkRepository $linkRep)
   {
   }
 
@@ -19,11 +20,11 @@ class LogDataProvider extends GeneralDataProvider
     if ($this->isSourceTypesInitialized) {
       return true;
     }
-    /*
-    $this->sourceTypes[AppConstants::LOG_TYPE_REDIRECT] = 'redirect';
-    $this->sourceTypes[AppConstants::LOG_TYPE_GENERAL] = 'general';
-    $this->sourceTypes[AppConstants::LOG_TYPE_REDIRECT_ERROR] = 'redirect error';
-    */
+    $this->sourceTypes[AppConstants::LOG_TYPE_LINK_CALLED] = 'link called';
+    $this->sourceTypes[AppConstants::LOG_TYPE_LINK_CHANGED] = 'link changed';
+    $this->sourceTypes[AppConstants::LOG_TYPE_LINK_CREATED] = 'link created';
+    $this->sourceTypes[AppConstants::LOG_TYPE_LINK_DELETED] = 'link deleted';
+
     $this->sourceTypes[AppConstants::LOG_TYPE_LOGIN] = 'login successful';
     $this->sourceTypes[AppConstants::LOG_TYPE_LOGIN_FAILED] = 'login failed';
     $this->sourceTypes[AppConstants::LOG_TYPE_REGISTER] = 'user registration';
@@ -46,9 +47,9 @@ class LogDataProvider extends GeneralDataProvider
     return true;
   }
 
-  // private bool $isRedirectSourceIDsInitialized = false;
+  private bool $isLinkSourceIDsInitialized = false;
 
-  // private array $redirectSourceIDs = [];
+  private array $linkSourceIDs = [];
 
   private bool $isUserSourceIDsInitialized = false;
 
@@ -59,15 +60,14 @@ class LogDataProvider extends GeneralDataProvider
    */
   public function getSourceIDText(int $sourceID, ?int $sourceType = null): string
   {
-    /*
-    if (in_array($sourceType, [AppConstants::LOG_TYPE_REDIRECT, AppConstants::LOG_TYPE_REDIRECT_ERROR])) {
-      if (!$this->isRedirectSourceIDsInitialized) {
-        $this->initRedirectSourceIDs();
+    if (in_array($sourceType, [AppConstants::LOG_TYPE_LINK_CREATED, AppConstants::LOG_TYPE_LINK_CALLED, AppConstants::LOG_TYPE_LINK_CHANGED, AppConstants::LOG_TYPE_LINK_DELETED])) {
+      if (!$this->isLinkSourceIDsInitialized) {
+        $this->initLinkSourceIDs();
       }
 
-      return array_key_exists($sourceID, $this->redirectSourceIDs) ? $this->redirectSourceIDs[$sourceID] : strval($sourceID);
+      return array_key_exists($sourceID, $this->linkSourceIDs) ? $this->linkSourceIDs[$sourceID] : strval($sourceID);
     }
-    */
+
     if (in_array($sourceType, AppConstants::LOG_ACCOUNT_OPERATIONS, true)) {
       if (!$this->isUserSourceIDsInitialized) {
         $this->initUserSourceIDs();
@@ -82,20 +82,18 @@ class LogDataProvider extends GeneralDataProvider
   /**
    * read all redirect, store it in an array.
    */
-  /*
-  private function initRedirectSourceIDs(): void
+  private function initLinkSourceIDs(): void
   {
-    if ($this->isRedirectSourceIDsInitialized) {
+    if ($this->isLinkSourceIDsInitialized) {
       return;
     }
 
-    foreach ($this->redirectsRep->findAll() as $redirect) {
-      $this->redirectSourceIDs[$redirect->getId()] = $redirect->getShortName();
+    foreach ($this->linkRep->findAll() as $link) {
+      $this->linkSourceIDs[$link->getId()] = $link->getName();
     }
 
-    $this->isRedirectSourceIDsInitialized = true;
+    $this->isLinkSourceIDsInitialized = true;
   }
-  */
 
   /**
    * read all redirect, store it in an array.

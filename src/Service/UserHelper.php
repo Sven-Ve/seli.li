@@ -44,8 +44,10 @@ class UserHelper
     try {
       foreach ($user->getLinks() as $link) {
         // TODO: Constants richtig stellen, Aufruf in UserDelete und ProfileDelete aufnehmen
-        $this->svcLogRep->batchDelete($link->getId(), AppConstants::LOG_TYPE_REDIRECT);
-        $this->svcLogRep->batchDelete($link->getId(), AppConstants::LOG_TYPE_REDIRECT_ERROR);
+        $this->svcLogRep->batchDelete($link->getId(), AppConstants::LOG_TYPE_LINK_CREATED);
+        $this->svcLogRep->batchDelete($link->getId(), AppConstants::LOG_TYPE_LINK_CHANGED);
+        $this->svcLogRep->batchDelete($link->getId(), AppConstants::LOG_TYPE_LINK_CALLED);
+        $this->svcLogRep->batchDelete($link->getId(), AppConstants::LOG_TYPE_LINK_DELETED);
       }
       $this->svcLogRep->batchDelete(null, null, $user->getId());
 
