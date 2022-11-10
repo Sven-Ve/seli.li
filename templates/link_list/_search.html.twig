@@ -1,0 +1,8 @@
+{% trans_default_domain 'VideoBundle' %}
+<form action="{{ path('link_list_index') }}">
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
+    <input type="text" class="form-control" aria-label="{% trans %}Search links{% endtrans %}"
+           name="q" value="{{ q }}" placeholder="{% trans %}Search links{% endtrans %}">
+  </div>
+</form>

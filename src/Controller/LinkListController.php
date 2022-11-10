@@ -21,10 +21,16 @@ class LinkListController extends _BaseController
     $this->denyAccessUnlessGranted('ROLE_USER');
 
     $page = $request->query->get('page', 1);
+    $query = $request->query->get('q');
 
-    $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser());
-//    dump($queryBuilder->getDQL());
-//    dump($queryBuilder->getQuery()->execute());
+    if ($query == null) {
+      $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser());
+    } else {
+      $queryBuilder = $linkRep->qbFindBySearchQuery($this->getUser(), $query);
+    }
+    dump($queryBuilder->getDQL());
+    dump($queryBuilder->getQuery()->execute());
+
     $links = new Pagerfanta(new QueryAdapter($queryBuilder));
     $links->setMaxPerPage(200);
     $links->setCurrentPage($page);
@@ -33,6 +39,7 @@ class LinkListController extends _BaseController
     return $this->render('link_list/index.html.twig', [
       'links' => $links,
       'haveToPaginate' => $haveToPaginate,
+      'q' => $query
     ]);
   }
 
