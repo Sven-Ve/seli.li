@@ -13,7 +13,7 @@ class HomeController extends _BaseController
   public function index(EventLog $eventLog): Response
   {
     if (!$this->isGranted('ROLE_USER')) {
-      $eventLog->log(0, AppConstants::LOG_TYPE_ANONHOME, ['level' => EventLog::LEVEL_DEBUG]);
+      $eventLog->log(0, AppConstants::LOG_TYPE_ANONHOME, ['level' => EventLog::LEVEL_INFO]);
 
       return $this->render('home/index.html.twig');
     }

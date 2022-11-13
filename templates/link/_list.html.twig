@@ -27,8 +27,6 @@
         <td>{{ link.description }}</td>
         <td>{{ link.category | default('-') }}</td>
         <td>
-          <a href="{{ path('app_link_show', {'id': link.id}) }}"
-             class='btn btn-sm btn-outline-secondary'>{% trans %}Show{% endtrans %}</a>
           <a href="{{ path('app_link_edit', {'id': link.id}) }}"
              class='btn btn-sm btn-outline-info'>{% trans %}Edit{% endtrans %}</a>
           <a href="{{ link.url }}" target='_blank'

@@ -11,3 +11,7 @@
 ## Version 1.1.0
 *Wed, 09 Nov 2022 18:05:31 +0000*
 - log and view page added
+
+## Version 1.1.1
+*Sun, 13 Nov 2022 19:59:59 +0000*
+- small improvements

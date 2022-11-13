@@ -79,40 +79,29 @@ class LinkRepository extends ServiceEntityRepository
   /**
    * @throws QueryException
    */
-  public function qbShowLinksByUser(?User $user = null): QueryBuilder
+  public function qbShowLinksByUser(User $user, ?string $query): QueryBuilder
   {
     $queryBuilder = $this->createQueryBuilder('l');
-    if ($user !== null) {
-      $queryBuilder->addCriteria(self::createUserCriteria($user));
+
+    if ($query) {
+      $searchTerms = self::extractSearchTerms($query);
+      if (\count($searchTerms) > 0) {
+        foreach ($searchTerms as $key => $term) {
+          $queryBuilder
+            ->orWhere('l.name LIKE :v_' . $key)
+            ->orWhere('l.description LIKE :v_' . $key)
+            ->setParameter('v_' . $key, '%' . $term . '%');
+        }
+      }
     }
+
+    $queryBuilder->addCriteria(self::createUserCriteria($user));
 
     return $queryBuilder
       ->addSelect('c')
       ->leftJoin('l.category', 'c')
       ->addOrderBy('c.name', 'asc')
       ->addOrderBy('l.name', 'asc');
-  }
-
-  /**
-   * @throws QueryException
-   */
-  public function qbFindBySearchQuery(User $user, string $query): QueryBuilder
-  {
-    $queryBuilder = $this->qbShowLinksByUser();
-
-    $searchTerms = self::extractSearchTerms($query);
-    if (\count($searchTerms) > 0) {
-      foreach ($searchTerms as $key => $term) {
-        $queryBuilder
-          ->orWhere('l.name LIKE :v_' . $key)
-          ->orWhere('l.description LIKE :v_' . $key)
-          ->setParameter('v_' . $key, '%' . $term . '%');
-      }
-    }
-    $queryBuilder
-      ->addCriteria(self::createUserCriteria($user)); // add user query after search terms because "or" and brackets
-
-    return $queryBuilder;
   }
 
   private static function extractSearchTerms(string $searchQuery): array

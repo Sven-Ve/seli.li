@@ -37,7 +37,7 @@ class LinkController extends _BaseController
     }
     if ($queryBuilder) {
       $links = new Pagerfanta(new QueryAdapter($queryBuilder));
-      $links->setMaxPerPage(5);
+      $links->setMaxPerPage(25);
       $links->setCurrentPage($page);
       $haveToPaginate = $links->haveToPaginate();
     } else {
@@ -76,17 +76,6 @@ class LinkController extends _BaseController
     return $this->renderForm('link/new.html.twig', [
       'link' => $link,
       'form' => $form,
-    ]);
-  }
-
-  #[Route('/{id}', name: 'app_link_show', methods: ['GET'])]
-  public function show(Link $link): Response
-  {
-    $this->denyAccessUnlessGranted('ROLE_USER');
-    $this->denyAccessUnlessGranted('view', $link);
-
-    return $this->render('link/show.html.twig', [
-      'link' => $link,
     ]);
   }
 

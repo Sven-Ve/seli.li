@@ -23,11 +23,7 @@ class LinkListController extends _BaseController
     $page = $request->query->get('page', 1);
     $query = $request->query->get('q');
 
-    if ($query == null) {
-      $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser());
-    } else {
-      $queryBuilder = $linkRep->qbFindBySearchQuery($this->getUser(), $query);
-    }
+    $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), $query);
     dump($queryBuilder->getDQL());
     dump($queryBuilder->getQuery()->execute());
 
@@ -39,7 +35,7 @@ class LinkListController extends _BaseController
     return $this->render('link_list/index.html.twig', [
       'links' => $links,
       'haveToPaginate' => $haveToPaginate,
-      'q' => $query
+      'q' => $query,
     ]);
   }
 
