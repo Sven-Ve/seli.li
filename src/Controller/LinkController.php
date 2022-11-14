@@ -28,12 +28,12 @@ class LinkController extends _BaseController
     if ($catId) {
       $currentCategory = $categoryRep->findOneBy(['id' => $catId, 'user' => $this->getUser()]);
       if ($currentCategory) {
-        $queryBuilder = $linkRep->qbLinksByUserAndCategory($this->getUser(), $currentCategory);
+        $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), null, $currentCategory);
       } else {
         $queryBuilder = null;
       }
     } else {
-      $queryBuilder = $linkRep->qbAllLinksByUser($this->getUser());
+      $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser());
     }
     if ($queryBuilder) {
       $links = new Pagerfanta(new QueryAdapter($queryBuilder));

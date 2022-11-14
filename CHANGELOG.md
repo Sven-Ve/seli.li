@@ -15,3 +15,7 @@
 ## Version 1.1.1
 *Sun, 13 Nov 2022 19:59:59 +0000*
 - small improvements
+
+## Version 1.1.2
+*Mon, 14 Nov 2022 07:40:00 +0000*
+- cleanup code, remove dump in prod

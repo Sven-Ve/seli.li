@@ -57,29 +57,11 @@ class LinkRepository extends ServiceEntityRepository
       ->andWhere(Criteria::expr()->eq('category', $category));
   }
 
-  /**
-   * @throws QueryException
-   */
-  public function qbAllLinksByUser(User $user): QueryBuilder
-  {
-    return $this->createQueryBuilder('l')
-      ->addCriteria(self::createUserCriteria($user));
-  }
 
   /**
    * @throws QueryException
    */
-  public function qbLinksByUserAndCategory(User $user, Category $category): QueryBuilder
-  {
-    return $this->createQueryBuilder('l')
-      ->addCriteria(self::createUserCriteria($user))
-      ->addCriteria(self::createCategoryCriteria($category));
-  }
-
-  /**
-   * @throws QueryException
-   */
-  public function qbShowLinksByUser(User $user, ?string $query): QueryBuilder
+  public function qbShowLinksByUser(User $user, ?string $query = null, Category $category = null): QueryBuilder
   {
     $queryBuilder = $this->createQueryBuilder('l');
 
@@ -95,6 +77,9 @@ class LinkRepository extends ServiceEntityRepository
       }
     }
 
+    if ($category) {
+      $queryBuilder->addCriteria(self::createCategoryCriteria($category));
+    }
     $queryBuilder->addCriteria(self::createUserCriteria($user));
 
     return $queryBuilder
