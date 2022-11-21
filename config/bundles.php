@@ -29,4 +29,5 @@ return [
     Svc\VersioningBundle\SvcVersioningBundle::class => ['dev' => true, 'test' => true],
     EasyCorp\Bundle\EasyDeployBundle\EasyDeployBundle::class => ['dev' => true, 'test' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
+    Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
 ];

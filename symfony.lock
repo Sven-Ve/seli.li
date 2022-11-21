@@ -117,6 +117,18 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "sentry/sentry-symfony": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "4.0",
+            "ref": "9ac202e84b6fb3c276cb3d7846006e0df65272d0"
+        },
+        "files": [
+            "config/packages/sentry.yaml"
+        ]
+    },
     "svc/avatar-bundle": {
         "version": "4.0.2"
     },

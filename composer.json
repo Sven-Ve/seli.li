@@ -15,6 +15,7 @@
         "pagerfanta/doctrine-orm-adapter": "^3.6",
         "pagerfanta/twig": "^3.6",
         "sensio/framework-extra-bundle": "^6.2",
+        "sentry/sentry-symfony": "^4.4",
         "svc/avatar-bundle": "^4.0",
         "svc/contactform-bundle": "^4.0",
         "svc/log-bundle": "^4.2",
