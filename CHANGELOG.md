@@ -19,3 +19,7 @@
 ## Version 1.1.2
 *Mon, 14 Nov 2022 07:40:00 +0000*
 - cleanup code, remove dump in prod
+
+## Version 1.2.0
+*Mon, 21 Nov 2022 19:20:32 +0000*
+- added sentry, updates
