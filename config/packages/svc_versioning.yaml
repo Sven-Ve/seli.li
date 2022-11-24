@@ -6,3 +6,5 @@ when@dev:
         run_deploy: true
         # run this command before start versioning, stop on error (e.q. phpstan, tests, ...)'
         pre_command: composer run-script phpstan
+        # Create a new release in config/packages/sentry.yaml
+        create_sentry_release: true

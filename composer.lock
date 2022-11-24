@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d31c78bcf3d9a4a9d9cde5d0bce207c",
+    "content-hash": "88914dc84d9b82ce3a10b36690a2cf9a",
     "packages": [
         {
             "name": "babdev/pagerfanta-bundle",
@@ -11821,24 +11821,25 @@
         },
         {
             "name": "svc/versioning-bundle",
-            "version": "3.0.1",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-versioning-bundle.git",
-                "reference": "a7356e24c0cfd69791002c0b2a6c5e0d36da9704"
+                "reference": "7941531b8ea3fd0eab59dac645fa7a132cca2a3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-versioning-bundle/zipball/a7356e24c0cfd69791002c0b2a6c5e0d36da9704",
-                "reference": "a7356e24c0cfd69791002c0b2a6c5e0d36da9704",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-versioning-bundle/zipball/7941531b8ea3fd0eab59dac645fa7a132cca2a3e",
+                "reference": "7941531b8ea3fd0eab59dac645fa7a132cca2a3e",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0.2",
-                "symfony/config": "5.4.*|^6",
-                "symfony/console": "5.4.*|^6",
-                "symfony/dependency-injection": "5.4.*|^6",
-                "symfony/http-kernel": "5.4.*|^6"
+                "php": "^8.1.0",
+                "symfony/config": "^6",
+                "symfony/console": "^6",
+                "symfony/dependency-injection": "^6",
+                "symfony/http-kernel": "^6",
+                "symfony/yaml": "^6"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1"
@@ -11865,9 +11866,9 @@
             "description": "Private package to handle version numbers and deploys",
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-versioning-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-versioning-bundle/tree/3.0.1"
+                "source": "https://github.com/Sven-Ve/svc-versioning-bundle/tree/4.0.0"
             },
-            "time": "2022-05-30T11:21:35+00:00"
+            "time": "2022-11-24T19:57:31+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -12588,7 +12589,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.1",
+        "php": ">=8.1.12",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },

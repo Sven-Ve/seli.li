@@ -31,3 +31,7 @@
 ## Version 1.2.2
 *Thu, 24 Nov 2022 14:44:22 +0000*
 - add 404 error page
+
+## Version 1.2.3
+*Thu, 24 Nov 2022 20:09:00 +0000*
+- update svc_versioning, write version to sentry
