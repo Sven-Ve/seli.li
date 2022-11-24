@@ -11821,16 +11821,16 @@
         },
         {
             "name": "svc/versioning-bundle",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-versioning-bundle.git",
-                "reference": "7941531b8ea3fd0eab59dac645fa7a132cca2a3e"
+                "reference": "9791c2d2d7546dca75256c15f232e298b2a2f031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-versioning-bundle/zipball/7941531b8ea3fd0eab59dac645fa7a132cca2a3e",
-                "reference": "7941531b8ea3fd0eab59dac645fa7a132cca2a3e",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-versioning-bundle/zipball/9791c2d2d7546dca75256c15f232e298b2a2f031",
+                "reference": "9791c2d2d7546dca75256c15f232e298b2a2f031",
                 "shasum": ""
             },
             "require": {
@@ -11866,9 +11866,9 @@
             "description": "Private package to handle version numbers and deploys",
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-versioning-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-versioning-bundle/tree/4.0.0"
+                "source": "https://github.com/Sven-Ve/svc-versioning-bundle/tree/4.0.1"
             },
-            "time": "2022-11-24T19:57:31+00:00"
+            "time": "2022-11-24T20:44:20+00:00"
         },
         {
             "name": "symfony/browser-kit",

@@ -35,3 +35,7 @@
 ## Version 1.2.3
 *Thu, 24 Nov 2022 20:09:00 +0000*
 - update svc_versioning, write version to sentry
+
+## Version 1.2.4
+*Thu, 24 Nov 2022 20:47:45 +0000*
+- add app name for sentry release
