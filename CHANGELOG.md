@@ -23,3 +23,7 @@
 ## Version 1.2.0
 *Mon, 21 Nov 2022 19:20:32 +0000*
 - added sentry, updates
+
+## Version 1.2.1
+*Thu, 24 Nov 2022 14:15:48 +0000*
+- add 404 error page

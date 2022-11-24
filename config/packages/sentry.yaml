@@ -1,3 +1,7 @@
+when@dev:
+    sentry:
+        dsn: '%env(SENTRY_DSN)%'
+
 when@prod:
     sentry:
         dsn: '%env(SENTRY_DSN)%'
