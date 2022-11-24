@@ -27,3 +27,7 @@
 ## Version 1.2.1
 *Thu, 24 Nov 2022 14:15:48 +0000*
 - add 404 error page
+
+## Version 1.2.2
+*Thu, 24 Nov 2022 14:44:22 +0000*
+- add 404 error page
