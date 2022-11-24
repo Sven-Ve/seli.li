@@ -8,3 +8,5 @@ when@dev:
         pre_command: composer run-script phpstan
         # Create a new release in config/packages/sentry.yaml
         create_sentry_release: true
+        # Sentry application name (included in release)
+        sentry_app_name: seli.li

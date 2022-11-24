@@ -2,9 +2,9 @@ when@dev:
     sentry:
         dsn: '%env(SENTRY_DSN)%'
         options:
-            release: 1.2.4
+            release: seli.li@1.2.5
 when@prod:
     sentry:
         dsn: '%env(SENTRY_DSN)%'
         options:
-            release: 1.2.4
+            release: seli.li@1.2.5
