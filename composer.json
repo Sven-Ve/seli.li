@@ -14,6 +14,7 @@
         "excelwebzone/recaptcha-bundle": "^1.5",
         "pagerfanta/doctrine-orm-adapter": "^3.6",
         "pagerfanta/twig": "^3.6",
+        "phpoffice/phpspreadsheet": "^1.25",
         "sensio/framework-extra-bundle": "^6.2",
         "sentry/sentry-symfony": "^4.4",
         "svc/avatar-bundle": "^4.0",

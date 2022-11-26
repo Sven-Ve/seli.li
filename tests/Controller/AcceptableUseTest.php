@@ -13,5 +13,4 @@ class AcceptableUseTest extends WebTestCase
 
     $this->assertResponseStatusCodeSame(200);
   }
-
 }

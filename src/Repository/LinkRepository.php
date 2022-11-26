@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+
 use function Symfony\Component\String\u;
 
 /**
@@ -56,7 +57,6 @@ class LinkRepository extends ServiceEntityRepository
     return Criteria::create()
       ->andWhere(Criteria::expr()->eq('category', $category));
   }
-
 
   /**
    * @throws QueryException

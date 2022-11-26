@@ -1,8 +1,8 @@
-when@dev:
-    sentry:
-        dsn: '%env(SENTRY_DSN)%'
-        options:
-            release: seli.li@1.2.5
+#when@dev:
+#    sentry:
+#        dsn: '%env(SENTRY_DSN)%'
+#        options:
+#            release: seli.li@1.2.5
 when@prod:
     sentry:
         dsn: '%env(SENTRY_DSN)%'

@@ -113,13 +113,13 @@ class Link extends _DefaultSuperclass implements \Stringable
 
   public function isFavorite(): bool
   {
-      return $this->favorite;
+    return $this->favorite;
   }
 
   public function setFavorite(bool $favorite): self
   {
-      $this->favorite = $favorite;
+    $this->favorite = $favorite;
 
-      return $this;
+    return $this;
   }
 }

@@ -14,5 +14,4 @@ class LoginPageTest extends WebTestCase
     $this->assertResponseIsSuccessful();
     $this->assertSelectorTextContains('h1', 'Please sign in');
   }
-
 }

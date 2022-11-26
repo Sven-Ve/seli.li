@@ -23,7 +23,12 @@
     <tbody>
     {% for link in links %}
       <tr>
-        <td>{{ link.name }}</td>
+        <td>
+          {{ link.name }}
+          {% if link.isFavorite %}
+            {{ include('_common/_favourite.html.twig') }}
+          {% endif %}
+        </td>
         <td>{{ link.description }}</td>
         <td>{{ link.category | default('-') }}</td>
         <td>

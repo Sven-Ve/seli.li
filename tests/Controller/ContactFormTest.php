@@ -14,5 +14,4 @@ class ContactFormTest extends WebTestCase
     $this->assertResponseIsSuccessful();
     $this->assertSelectorTextContains('h3', 'Contact');
   }
-
 }

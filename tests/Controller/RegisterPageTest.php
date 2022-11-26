@@ -28,7 +28,6 @@ class RegisterPageTest extends WebTestCase
     $this->assertSelectorTextContains('h1', 'Register a new user');
   }
 
-
   public function testRegisterFormDisabled(): void
   {
     $this->paramRep->setBool(AppConstants::PARAM_REGISTER_ENABLED, false);

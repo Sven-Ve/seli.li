@@ -34,6 +34,9 @@
 
             <li>
               <a href="{{ path('link_list_call', {'id': link.id }) }}" target="_blank">{{ link.name }}</a>
+              {% if link.isFavorite %}
+                {{ include('_common/_favourite.html.twig') }}
+              {% endif %}
               {% if link.description %}
                 <br/><small class='text-muted'>{{ link.description }}</small>
               {% endif %}
