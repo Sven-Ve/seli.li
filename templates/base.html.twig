@@ -68,14 +68,11 @@
 										<i class="fa-solid fa-shield"></i>
 										{% trans %}Manage 2FA{% endtrans %}
                   </a>
+									<a class="dropdown-item" href="{{ path('export2excel') }}">
+										<i class="fa-solid fa-file-export"></i>
+										{% trans %}Export to Excel{% endtrans %}
+									</a>
 									{% if is_granted('ROLE_ADMIN') %}
-										{#
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="{{ path('eadmin') }}">
-											<i class="fa-solid fa-toolbox"></i>
-											{% trans %}EasyAdmin{% endtrans %}
-										</a>
-										#}
 										<a class="dropdown-item" href="{{ path('user_index') }}">
 											<i class="fas fa-user-friends"></i>
 											{% trans %}Users{% endtrans %}
@@ -97,12 +94,6 @@
 											{% trans %}Info{% endtrans %}
                     </a>
 									{% endif %}
-									{#
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="{{ path('about') }}">
-										<i class="fas fa-info-circle"></i>
-										{% trans %}About{% endtrans %}</a>
-#}
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{ path('app_logout') }}">
 										<i class="fas fa-sign-out-alt"></i>
@@ -130,11 +121,13 @@
 							</li>
 						{% endif %}
 
-						<li class="nav-item">
-							<a class="nav-link active" href="{{ path('svc_contact_form') }}">
-								<i class="fas fa-envelope-square"></i>
-								{% trans %}Contact{% endtrans %}</a>
-						</li>
+						{% if is_granted('ROLE_USER') %}
+							<li class="nav-item">
+								<a class="nav-link active" href="{{ path('svc_contact_form') }}">
+									<i class="fas fa-envelope-square"></i>
+									{% trans %}Contact{% endtrans %}</a>
+							</li>
+						{% endif %}
 
 					</ul>
 

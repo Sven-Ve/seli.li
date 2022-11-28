@@ -15,7 +15,8 @@ class ExportController extends _BaseController
   #[Route('/', name: 'export2excel')]
   public function exportToExcel(LinkRepository $linkRep): void
   {
-    $filename = 'Test1';
+    $this->denyAccessUnlessGranted('ROLE_USER');
+    $filename = 'selili';
     $links = $linkRep->qbShowLinksByUser($this->getUser())->getQuery()->execute();
 
     $streamedResponse = new StreamedResponse();

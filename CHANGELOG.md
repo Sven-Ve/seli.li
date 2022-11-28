@@ -47,3 +47,7 @@
 ## Version 1.3.0
 *Mon, 28 Nov 2022 13:20:37 +0000*
 - sentry added
+
+## Version 1.3.1
+*Mon, 28 Nov 2022 15:50:17 +0000*
+- link to excel export added
