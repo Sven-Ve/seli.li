@@ -38,8 +38,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
   #[ORM\Column]
   private ?string $password = null;
 
-  #[ORM\Column(type: 'boolean')]
-  private $isVerified = false;
+  #[ORM\Column]
+  private bool $isVerified = false;
 
   #[ORM\Column(length: 100)]
   private ?string $firstName = null;

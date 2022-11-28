@@ -43,3 +43,7 @@
 ## Version 1.2.5
 *Thu, 24 Nov 2022 20:48:29 +0000*
 - add app name for sentry release (1)
+
+## Version 1.3.0
+*Mon, 28 Nov 2022 13:20:37 +0000*
+- sentry added
