@@ -5,7 +5,7 @@ namespace App\EventListener;
 use App\Entity\_DefaultSuperclass;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 
 /**
  * set username and date for create and update entities, based on DefaultSuperclass.

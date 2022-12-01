@@ -26,7 +26,7 @@ class ProfileController extends _BaseController
       return $this->redirectToRoute('home');
     }
 
-    return $this->renderForm('profile/profile_edit.html.twig', [
+    return $this->render('profile/profile_edit.html.twig', [
       'profile' => $profile,
       'form' => $form,
     ]);

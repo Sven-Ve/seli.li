@@ -12,22 +12,6 @@ class HomeController extends _BaseController
   #[Route('/', name: 'home')]
   public function index(EventLog $eventLog): Response
   {
-    /*
-        \Sentry\withScope(function (\Sentry\State\Scope $scope): void {
-          $scope->setUser(['username' => 'max@moritz.de']);
-          $scope->setTag("svc_sender", "svc_log");
-
-          $scope->setContext('svc_log', [
-            'object_id' => 1,
-            'object_type' => 2,
-          ]);
-          captureMessage("Hallo2",Severity::fatal());
-        });
-
-
-    dd("halt");
-    */
-
     if (!$this->isGranted('ROLE_USER')) {
       $eventLog->log(0, AppConstants::LOG_TYPE_ANONHOME, ['level' => EventLog::LEVEL_INFO]);
 

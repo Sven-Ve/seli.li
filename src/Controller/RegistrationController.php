@@ -72,7 +72,7 @@ class RegistrationController extends _BaseController
       }
     }
 
-    return $this->renderForm('registration/register.html.twig', [
+    return $this->render('registration/register.html.twig', [
       'registrationForm' => $form,
     ]);
   }

@@ -5,7 +5,7 @@ namespace App\Tests\Controller;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ContactFormTest extends WebTestCase
+class ProfileFormTest extends WebTestCase
 {
   public function testContactForm(): void
   {
@@ -16,9 +16,9 @@ class ContactFormTest extends WebTestCase
     // simulate $testUser being logged in
     $client->loginUser($adminUser);
 
-    $crawler = $client->request('GET', '/svc-contactform/contact/');
+    $crawler = $client->request('GET', '/profile/');
 
     $this->assertResponseIsSuccessful();
-    $this->assertSelectorTextContains('h3', 'Contact');
+    $this->assertSelectorTextContains('h2', 'Edit Profile');
   }
 }

@@ -7,9 +7,9 @@ use App\Exception\SuperAdminDeleteForbiddenException;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Svc\LogBundle\Repository\SvcLogRepository;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\Security;
 
 class UserHelper
 {

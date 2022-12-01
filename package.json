@@ -19,7 +19,7 @@
         "sass-loader": "^13.0.0",
         "stimulus-use": "^0.51.0",
         "sweetalert2": ">=11",
-        "tom-select": "^2.0.1",
+        "tom-select": "^2.2.2",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
         "webpack-notifier": "^1.15.0"
