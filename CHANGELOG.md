@@ -51,3 +51,7 @@
 ## Version 1.3.1
 *Mon, 28 Nov 2022 15:50:17 +0000*
 - link to excel export added
+
+## Version 1.3.2
+*Thu, 01 Dec 2022 21:27:48 +0000*
+- update to symfony 6.2
