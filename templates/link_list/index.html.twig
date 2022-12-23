@@ -33,12 +33,17 @@
     {% endif %}
 
             <li>
-              <a href="{{ path('link_list_call', {'id': link.id }) }}" target="_blank">{{ link.name }}</a>
+              <a href="{{ path('link_list_call', {'id': link.id }) }}" target="_blank">
+                {{ link.name | highlight (q | default(null)) }}
+              </a>
               {% if link.isFavorite %}
                 {{ include('_common/_favourite.html.twig') }}
               {% endif %}
               {% if link.description %}
-                <br/><small class='text-muted'>{{ link.description }}</small>
+                <br/>
+                <small class='text-muted'>
+                  {{ link.description | highlight (q | default(null)) }}
+                </small>
               {% endif %}
             </li>
   {% endfor %}
