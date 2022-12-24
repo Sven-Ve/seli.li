@@ -2,14 +2,13 @@
 
 namespace App\Twig;
 
-use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+use function Symfony\Component\String\u;
+
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
-use function Symfony\Component\String\u;
 
 class TwigHighlight extends AbstractExtension
 {
-
   public function getFilters(): array
   {
     return [
