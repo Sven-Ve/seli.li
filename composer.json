@@ -8,13 +8,13 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "babdev/pagerfanta-bundle": "^3.7",
-        "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/doctrine-bundle": "^2.8",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.13",
+        "doctrine/orm": "^2.14",
         "excelwebzone/recaptcha-bundle": "^1.5",
         "pagerfanta/doctrine-orm-adapter": "^3.7",
         "pagerfanta/twig": "^3.7",
-        "phpoffice/phpspreadsheet": "^1.25",
+        "phpoffice/phpspreadsheet": "^1.26",
         "sentry/sentry-symfony": "^4.5",
         "svc/avatar-bundle": "^4.0",
         "svc/contactform-bundle": "^4.1",
@@ -42,8 +42,8 @@
         "symfony/yaml": "6.2.*",
         "symfonycasts/reset-password-bundle": "^1.16",
         "symfonycasts/verify-email-bundle": "^1.12",
-        "twig/extra-bundle": "^3.4",
-        "twig/twig": "^3.4"
+        "twig/extra-bundle": "^3.5",
+        "twig/twig": "^3.5"
     },
     "config": {
         "allow-plugins": {

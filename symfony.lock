@@ -163,7 +163,16 @@
         ]
     },
     "svc/versioning-bundle": {
-        "version": "3.0.1"
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "007c0cfb06aecacfaba99c1608eb0de85a61874b"
+        },
+        "files": [
+            "config/packages/svc_versioning.yaml"
+        ]
     },
     "symfony/console": {
         "version": "6.1",
