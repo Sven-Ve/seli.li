@@ -59,3 +59,7 @@
 ## Version 1.3.3
 *Fri, 23 Dec 2022 20:22:36 +0000*
 - add search highlighting
+
+## Version 1.3.4
+*Fri, 17 Mar 2023 19:30:27 +0000*
+- update to symfony 6.2.7

@@ -4,11 +4,14 @@ namespace App\Tests\Controller;
 
 use App\Service\AppConstants;
 use Svc\ParamBundle\Repository\ParamsRepository;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RegisterPageTest extends WebTestCase
 {
   private null|ParamsRepository $paramRep;
+
+  private KernelBrowser $client;
 
   public function setUp(): void
   {
