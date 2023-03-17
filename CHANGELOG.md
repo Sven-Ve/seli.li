@@ -67,3 +67,7 @@
 ## Version 1.3.5
 *Fri, 17 Mar 2023 19:36:59 +0000*
 - update to symfony 6.2.7 (2)
+
+## Version 1.3.6
+*Fri, 17 Mar 2023 19:42:28 +0000*
+- increase remember_me
