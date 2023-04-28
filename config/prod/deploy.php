@@ -15,11 +15,11 @@ return new class extends DefaultDeployer
       ->repositoryUrl('git@github.com:Sven-Ve/seli.li.git')
       // the repository branch to deploy
       ->repositoryBranch('main')
-      ->remoteComposerBinaryPath('/usr/local/php81/bin/php /home/svenvett/bin/composer')
+      ->remoteComposerBinaryPath('/usr/local/php82/bin/php /home/svenvett/bin/composer')
       ->sharedFilesAndDirs(['.env.local', 'public/.htaccess'])
       ->composerInstallFlags('--prefer-dist --no-interaction --no-dev') // more logging, without quiet
       ->keepReleases(2)
-      ->remotePhpBinaryPath('/usr/local/php81/bin/php')
+      ->remotePhpBinaryPath('/usr/local/php82/bin/php')
     ;
   }
 
