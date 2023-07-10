@@ -38,7 +38,7 @@
         "symfony/twig-bundle": "6.3.*",
         "symfony/ux-autocomplete": "^2.9",
         "symfony/validator": "6.3.*",
-        "symfony/webpack-encore-bundle": "^2",
+        "symfony/webpack-encore-bundle": "^v1.17.1",
         "symfony/yaml": "6.3.*",
         "symfonycasts/reset-password-bundle": "^1.17",
         "symfonycasts/verify-email-bundle": "^1.13",
