@@ -73,7 +73,7 @@ class LinkController extends _BaseController
       return $this->redirectToRoute('app_link_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    return $this->renderForm('link/new.html.twig', [
+    return $this->render('link/new.html.twig', [
       'link' => $link,
       'form' => $form,
     ]);
@@ -94,7 +94,7 @@ class LinkController extends _BaseController
       return $this->redirectToRoute('app_link_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    return $this->renderForm('link/edit.html.twig', [
+    return $this->render('link/edit.html.twig', [
       'link' => $link,
       'form' => $form,
     ]);

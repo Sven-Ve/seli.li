@@ -44,7 +44,7 @@ class CategoryController extends _BaseController
       return $this->redirectToRoute('category_index');
     }
 
-    return $this->renderForm('category/new.html.twig', [
+    return $this->render('category/new.html.twig', [
       'category' => $category,
       'form' => $form,
     ]);
@@ -66,7 +66,7 @@ class CategoryController extends _BaseController
       return $this->redirectToRoute('category_index');
     }
 
-    return $this->renderForm('category/edit.html.twig', [
+    return $this->render('category/edit.html.twig', [
       'category' => $category,
       'form' => $form,
     ]);

@@ -43,7 +43,7 @@ class UserController extends _BaseController
       return $this->redirectToRoute('user_index');
     }
 
-    return $this->renderForm('user/edit.html.twig', [
+    return $this->render('user/edit.html.twig', [
       'user' => $user,
       'form' => $form,
     ]);
