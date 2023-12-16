@@ -28,4 +28,6 @@ stats.json
 
 ###> phpstan/phpstan ###
 phpstan.neon
+/.phpunit.cache/
 ###< phpstan/phpstan ###
+

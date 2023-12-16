@@ -90,7 +90,7 @@
             "@auto-scripts"
         ],
         "phpstan": "php -d memory_limit=-1 vendor/bin/phpstan analyse src/ --level 5 -c .phpstan.neon",
-        "test": "bin/console --env test doctrine:database:create; bin/console --env test doctrine:schema:update --force; bin/console --env=test doctrine:fixtures:load --no-interaction; php bin/phpunit --testdox"
+        "test": "bin/console --env test doctrine:database:create; bin/console --env test doctrine:schema:update --force --complete; bin/console --env=test doctrine:fixtures:load --no-interaction; php bin/phpunit --testdox"
     },
     "conflict": {
         "symfony/symfony": "*"
