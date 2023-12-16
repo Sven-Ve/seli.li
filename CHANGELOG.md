@@ -75,3 +75,7 @@
 ## Version 1.3.7
 *Fri, 28 Apr 2023 15:54:20 +0000*
 - update to symfony 6.2.10
+
+## Version 1.4.0
+*Sat, 16 Dec 2023 20:29:07 +0000*
+- Update to symfony 6.4.1
