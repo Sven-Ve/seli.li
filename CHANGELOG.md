@@ -79,3 +79,7 @@
 ## Version 1.4.0
 *Sat, 16 Dec 2023 20:29:07 +0000*
 - Update to symfony 6.4.1
+
+## Version 1.4.1
+*Sun, 17 Dec 2023 19:13:26 +0000*
+- fixed test errors

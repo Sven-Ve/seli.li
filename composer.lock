@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e378ffbb7ebd9ea3e2f4629740ccf9f",
+    "content-hash": "7e766c0e0325a08edfb145cf59e1d184",
     "packages": [
         {
             "name": "babdev/pagerfanta-bundle",
@@ -4653,26 +4653,26 @@
         },
         {
             "name": "svc/avatar-bundle",
-            "version": "4.0.2",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-avatar-bundle.git",
-                "reference": "752acc694fdfcf03315a71396a4e13759a2c85e3"
+                "reference": "be10e5de495530bfd3147dd1c3417308e9ab4817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-avatar-bundle/zipball/752acc694fdfcf03315a71396a4e13759a2c85e3",
-                "reference": "752acc694fdfcf03315a71396a4e13759a2c85e3",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-avatar-bundle/zipball/be10e5de495530bfd3147dd1c3417308e9ab4817",
+                "reference": "be10e5de495530bfd3147dd1c3417308e9ab4817",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0.2",
-                "symfony/framework-bundle": "^6.1",
-                "symfony/twig-bundle": "^6.1"
+                "php": "^8.2",
+                "symfony/framework-bundle": "^6.3 || ^7",
+                "symfony/twig-bundle": "^6.3 || ^7"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.7",
-                "symfony/phpunit-bridge": "^6.1"
+                "phpstan/phpstan": "^1.10",
+                "symfony/phpunit-bridge": "^6.3 || ^7"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -4693,22 +4693,22 @@
             "description": "get the url for an avatar image as a twig function",
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-avatar-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-avatar-bundle/tree/4.0.2"
+                "source": "https://github.com/Sven-Ve/svc-avatar-bundle/tree/5.0.2"
             },
-            "time": "2022-07-21T18:43:06+00:00"
+            "time": "2023-12-17T16:16:23+00:00"
         },
         {
             "name": "svc/contactform-bundle",
-            "version": "5.0.0",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-contactform-bundle.git",
-                "reference": "89fa85de93411cd4903ef06df256a344ab478d06"
+                "reference": "2576bf64ca46910d00989b28f7ea848bca5fe719"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-contactform-bundle/zipball/89fa85de93411cd4903ef06df256a344ab478d06",
-                "reference": "89fa85de93411cd4903ef06df256a344ab478d06",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-contactform-bundle/zipball/2576bf64ca46910d00989b28f7ea848bca5fe719",
+                "reference": "2576bf64ca46910d00989b28f7ea848bca5fe719",
                 "shasum": ""
             },
             "require": {
@@ -4723,8 +4723,8 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.10",
-                "symfony/browser-kit": "^6.3|^7",
-                "symfony/phpunit-bridge": "^6.3|^7"
+                "phpunit/phpunit": "^10.2",
+                "symfony/browser-kit": "^6.3|^7"
             },
             "suggest": {
                 "excelwebzone/recaptcha-bundle": "Could by used in the contact form",
@@ -4749,22 +4749,22 @@
             "description": "Display a contactform, send a mail",
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-contactform-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-contactform-bundle/tree/5.0.0"
+                "source": "https://github.com/Sven-Ve/svc-contactform-bundle/tree/5.0.1"
             },
-            "time": "2023-12-16T16:29:25+00:00"
+            "time": "2023-12-17T18:16:35+00:00"
         },
         {
             "name": "svc/log-bundle",
-            "version": "5.0.0",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-log-bundle.git",
-                "reference": "1984ddf0b47c03264f092843ac1b8eb75f51ea4c"
+                "reference": "661327db2f4b0325662abc0f081870739912d4d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-log-bundle/zipball/1984ddf0b47c03264f092843ac1b8eb75f51ea4c",
-                "reference": "1984ddf0b47c03264f092843ac1b8eb75f51ea4c",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-log-bundle/zipball/661327db2f4b0325662abc0f081870739912d4d6",
+                "reference": "661327db2f4b0325662abc0f081870739912d4d6",
                 "shasum": ""
             },
             "require": {
@@ -4789,8 +4789,7 @@
                 "phpstan/phpstan": "^1.7",
                 "phpstan/phpstan-doctrine": "^1.2",
                 "phpunit/phpunit": "^10.5",
-                "symfony/browser-kit": "^6.3|^7",
-                "symfony/phpunit-bridge": "^6.3|^7"
+                "symfony/browser-kit": "^6.3|^7"
             },
             "suggest": {
                 "easycorp/easyadmin-bundle": "If the EasyAdmin log admin page is to be used",
@@ -4818,22 +4817,22 @@
             ],
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-log-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-log-bundle/tree/5.0.0"
+                "source": "https://github.com/Sven-Ve/svc-log-bundle/tree/5.0.2"
             },
-            "time": "2023-12-16T15:23:26+00:00"
+            "time": "2023-12-17T19:02:34+00:00"
         },
         {
             "name": "svc/param-bundle",
-            "version": "6.0.0",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-param-bundle.git",
-                "reference": "3d3299e6b34c7002e4a516530fbf3a8606ab9dad"
+                "reference": "9ba23ea593a586a78b8157cce0d172fea70b60d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-param-bundle/zipball/3d3299e6b34c7002e4a516530fbf3a8606ab9dad",
-                "reference": "3d3299e6b34c7002e4a516530fbf3a8606ab9dad",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-param-bundle/zipball/9ba23ea593a586a78b8157cce0d172fea70b60d8",
+                "reference": "9ba23ea593a586a78b8157cce0d172fea70b60d8",
                 "shasum": ""
             },
             "require": {
@@ -4848,9 +4847,9 @@
                 "symfony/yaml": "^6.3|^7"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.7",
-                "symfony/browser-kit": "^6.3|^7",
-                "symfony/phpunit-bridge": "^6.3|^7"
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.2",
+                "symfony/browser-kit": "^6.3|^7"
             },
             "suggest": {
                 "easycorp/easyadmin-bundle": "If the EasyAdmin param management page is to be used"
@@ -4874,22 +4873,22 @@
             "description": "Package to handle (set, get, edit) params in a database table",
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-param-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-param-bundle/tree/6.0.0"
+                "source": "https://github.com/Sven-Ve/svc-param-bundle/tree/6.0.1"
             },
-            "time": "2023-12-16T15:48:00+00:00"
+            "time": "2023-12-17T18:29:37+00:00"
         },
         {
             "name": "svc/profile-bundle",
-            "version": "5.0.0",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-profile-bundle.git",
-                "reference": "917dc1e9d49e0c88301e4ed53af174684cc65e08"
+                "reference": "12e9e1c1e01c7c97e827e181307bde8614818c9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-profile-bundle/zipball/917dc1e9d49e0c88301e4ed53af174684cc65e08",
-                "reference": "917dc1e9d49e0c88301e4ed53af174684cc65e08",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-profile-bundle/zipball/12e9e1c1e01c7c97e827e181307bde8614818c9c",
+                "reference": "12e9e1c1e01c7c97e827e181307bde8614818c9c",
                 "shasum": ""
             },
             "require": {
@@ -4907,8 +4906,8 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.10",
-                "symfony/browser-kit": "^6.3|^7",
-                "symfony/phpunit-bridge": "^6.3|^7"
+                "phpunit/phpunit": "^10.2",
+                "symfony/browser-kit": "^6.3|^7"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -4929,29 +4928,29 @@
             "description": "Package to handle profiles (change password, change mail)",
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-profile-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-profile-bundle/tree/5.0.0"
+                "source": "https://github.com/Sven-Ve/svc-profile-bundle/tree/5.0.1"
             },
-            "time": "2023-12-16T19:43:24+00:00"
+            "time": "2023-12-17T18:42:54+00:00"
         },
         {
             "name": "svc/totp-bundle",
-            "version": "5.0.0",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-totp-bundle.git",
-                "reference": "784977f5bdc4299f0693fa36735943f1f0f03d50"
+                "reference": "bd6c7cd8202c14f5a3939160264c6ec066a874a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-totp-bundle/zipball/784977f5bdc4299f0693fa36735943f1f0f03d50",
-                "reference": "784977f5bdc4299f0693fa36735943f1f0f03d50",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-totp-bundle/zipball/bd6c7cd8202c14f5a3939160264c6ec066a874a4",
+                "reference": "bd6c7cd8202c14f5a3939160264c6ec066a874a4",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.10",
                 "doctrine/orm": "^2.11",
                 "endroid/qr-code-bundle": "^5.0",
-                "php": "^8.1",
+                "php": "^8.2",
                 "scheb/2fa-backup-code": "^7.0",
                 "scheb/2fa-bundle": "^7.0",
                 "scheb/2fa-totp": "^7.0",
@@ -4988,26 +4987,26 @@
             "description": "Userinterface for the excellent SchebTwoFactorBundle",
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-totp-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-totp-bundle/tree/5.0.0"
+                "source": "https://github.com/Sven-Ve/svc-totp-bundle/tree/5.0.2"
             },
-            "time": "2023-12-16T14:56:21+00:00"
+            "time": "2023-12-17T18:23:09+00:00"
         },
         {
             "name": "svc/util-bundle",
-            "version": "5.0.1",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-util-bundle.git",
-                "reference": "b81427944295abe29076bc8decbe42b3bb49c619"
+                "reference": "b5ca49815d265a431882342cd269c526f2c4500f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-util-bundle/zipball/b81427944295abe29076bc8decbe42b3bb49c619",
-                "reference": "b81427944295abe29076bc8decbe42b3bb49c619",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-util-bundle/zipball/b5ca49815d265a431882342cd269c526f2c4500f",
+                "reference": "b5ca49815d265a431882342cd269c526f2c4500f",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.1",
+                "php": "^8.2",
                 "symfony/console": "^6.3|^7",
                 "symfony/framework-bundle": "^6.3|^7",
                 "symfony/mailer": "^6.3|^7",
@@ -5017,8 +5016,8 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.7",
-                "symfony/browser-kit": "^6.3|^7",
-                "symfony/phpunit-bridge": "^6.3|^7"
+                "phpunit/phpunit": "^10.2",
+                "symfony/browser-kit": "^6.3|^7"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -5042,9 +5041,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-util-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-util-bundle/tree/5.0.1"
+                "source": "https://github.com/Sven-Ve/svc-util-bundle/tree/5.0.2"
             },
-            "time": "2023-12-16T16:04:53+00:00"
+            "time": "2023-12-17T18:51:00+00:00"
         },
         {
             "name": "symfony/asset",
@@ -12082,33 +12081,33 @@
         },
         {
             "name": "svc/easy-deploy-bundle",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/easy-deploy-bundle.git",
-                "reference": "e02d844929d6b938bd616396dfa0041e438d09c1"
+                "reference": "cd51fd19bbfd1df6f94a653f47a975e4dafcba10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/easy-deploy-bundle/zipball/e02d844929d6b938bd616396dfa0041e438d09c1",
-                "reference": "e02d844929d6b938bd616396dfa0041e438d09c1",
+                "url": "https://api.github.com/repos/Sven-Ve/easy-deploy-bundle/zipball/cd51fd19bbfd1df6f94a653f47a975e4dafcba10",
+                "reference": "cd51fd19bbfd1df6f94a653f47a975e4dafcba10",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.0",
-                "symfony/config": "~5.0|~6.0",
-                "symfony/console": "~5.0|~6.0",
-                "symfony/dependency-injection": "~5.0|~6.0",
-                "symfony/expression-language": "~5.0|~6.0",
-                "symfony/filesystem": "~5.0|~6.0",
-                "symfony/http-foundation": "~5.0|~6.0",
-                "symfony/http-kernel": "~5.0|~6.0",
+                "symfony/config": "~5.0|~6.0|~7.0",
+                "symfony/console": "~5.0|~6.0|~7.0",
+                "symfony/dependency-injection": "~5.0|~6.0|~7.0",
+                "symfony/expression-language": "~5.0|~6.0|~7.0",
+                "symfony/filesystem": "~5.0|~6.0|~7.0",
+                "symfony/http-foundation": "~5.0|~6.0|~7.0",
+                "symfony/http-kernel": "~5.0|~6.0|~7.0",
                 "symfony/polyfill-mbstring": "^1.3",
-                "symfony/process": "~5.0|~6.0"
+                "symfony/process": "~5.0|~6.0|~7.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.6",
-                "phpunit/phpunit": "9.5.*"
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9|^10"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -12139,34 +12138,34 @@
                 "deployment"
             ],
             "support": {
-                "source": "https://github.com/Sven-Ve/easy-deploy-bundle/tree/v1.1.0"
+                "source": "https://github.com/Sven-Ve/easy-deploy-bundle/tree/v1.2.0"
             },
-            "time": "2022-04-28T13:15:01+00:00"
+            "time": "2023-12-17T16:11:33+00:00"
         },
         {
             "name": "svc/versioning-bundle",
-            "version": "4.0.1",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-versioning-bundle.git",
-                "reference": "9791c2d2d7546dca75256c15f232e298b2a2f031"
+                "reference": "6922cf087b0e88b7455790973fd341d62dd16d91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-versioning-bundle/zipball/9791c2d2d7546dca75256c15f232e298b2a2f031",
-                "reference": "9791c2d2d7546dca75256c15f232e298b2a2f031",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-versioning-bundle/zipball/6922cf087b0e88b7455790973fd341d62dd16d91",
+                "reference": "6922cf087b0e88b7455790973fd341d62dd16d91",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.1.0",
-                "symfony/config": "^6",
-                "symfony/console": "^6",
-                "symfony/dependency-injection": "^6",
-                "symfony/http-kernel": "^6",
-                "symfony/yaml": "^6"
+                "php": "^8.2",
+                "symfony/config": "^6 || ^7",
+                "symfony/console": "^6 || ^7",
+                "symfony/dependency-injection": "^6 || ^7",
+                "symfony/http-kernel": "^6 || ^7",
+                "symfony/yaml": "^6 || ^7"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1"
+                "phpstan/phpstan": "^1.10"
             },
             "suggest": {
                 "easycorp/easy-deploy-bundle": "Prefered tool to deploy the application"
@@ -12190,9 +12189,9 @@
             "description": "Private package to handle version numbers and deploys",
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-versioning-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-versioning-bundle/tree/4.0.1"
+                "source": "https://github.com/Sven-Ve/svc-versioning-bundle/tree/5.0.0"
             },
-            "time": "2022-11-24T20:44:20+00:00"
+            "time": "2023-12-17T16:00:23+00:00"
         },
         {
             "name": "symfony/browser-kit",
