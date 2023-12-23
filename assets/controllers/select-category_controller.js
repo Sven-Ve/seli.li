@@ -5,6 +5,7 @@ export default class extends Controller {
   static values = { url: String };
   static targets = ["button"]
 
+
   async set(event) {
     const category = event.target.getAttribute("data-category-id");
 
@@ -12,8 +13,8 @@ export default class extends Controller {
     if (category !== "0") {
       url = this.urlValue + "&catId=" + category;
     }
-    
-    this.dispatch('success', {url: url});
+
+    this.dispatch('success', { detail: {url: url} });
     this.setCatStats(category);
     window.history.pushState('', '',
       url.replace('?ajax=1&', '?').replace('?ajax=1','')
