@@ -1,14 +1,9 @@
 import { Controller } from '@hotwired/stimulus';
-import { useDispatch } from 'stimulus-use';
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
   static values = { url: String };
   static targets = ["button"]
-
-  connect() {
-    useDispatch(this);
-  }
 
   async set(event) {
     const category = event.target.getAttribute("data-category-id");
@@ -17,7 +12,7 @@ export default class extends Controller {
     if (category !== "0") {
       url = this.urlValue + "&catId=" + category;
     }
-
+    
     this.dispatch('success', {url: url});
     this.setCatStats(category);
     window.history.pushState('', '',
