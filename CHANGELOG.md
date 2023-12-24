@@ -87,3 +87,7 @@
 ## Version 1.4.2
 *Sat, 23 Dec 2023 22:55:08 +0000*
 - update symfony/webpack-encore-bundle to v2
+
+## Version 1.5.0
+*Sun, 24 Dec 2023 21:11:18 +0000*
+- update to symfony 7
