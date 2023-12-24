@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\User;
-use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaV3Type;
-use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrueV3;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,9 +28,9 @@ class ProfileType extends AbstractType
           'data-live-search' => 'true',
         ],
       ])
-      ->add('recaptcha', EWZRecaptchaV3Type::class, [
-        'action_name' => 'form',
-        'constraints' => [new IsTrueV3()],
+      ->add('captcha', Recaptcha3Type::class, [
+        'constraints' => new Recaptcha3(),
+        'action_name' => 'profile',
       ])
       ->add('Save', SubmitType::class, ['attr' => ['class' => 'btn btn-primary btn-block']]);
   }

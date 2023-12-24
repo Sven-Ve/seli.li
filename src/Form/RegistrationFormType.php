@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\User;
-use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaV3Type;
-use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrueV3;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -53,9 +53,9 @@ class RegistrationFormType extends AbstractType
         'preferred_choices' => ['CH', 'DE', 'US'],
         'autocomplete' => true,
       ])
-      ->add('recaptcha', EWZRecaptchaV3Type::class, [
-        'action_name' => 'form',
-        'constraints' => [new IsTrueV3()],
+      ->add('captcha', Recaptcha3Type::class, [
+        'constraints' => new Recaptcha3(),
+        'action_name' => 'register',
       ])
       ->add('agreeTerms', CheckboxType::class, [
         'mapped' => false,

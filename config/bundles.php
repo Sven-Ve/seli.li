@@ -15,7 +15,6 @@ return [
     Svc\UtilBundle\SvcUtilBundle::class => ['all' => true],
     Svc\ContactformBundle\SvcContactformBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle::class => ['all' => true],
     Symfony\UX\Autocomplete\AutocompleteBundle::class => ['all' => true],
     Svc\ProfileBundle\SvcProfileBundle::class => ['all' => true],
     Svc\ParamBundle\SvcParamBundle::class => ['all' => true],
@@ -30,4 +29,5 @@ return [
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     Sentry\SentryBundle\SentryBundle::class => ['dev' => false, 'prod' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
+    Karser\Recaptcha3Bundle\KarserRecaptcha3Bundle::class => ['all' => true],
 ];
