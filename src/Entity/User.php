@@ -222,7 +222,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
   {
     if (!$this->categories->contains($category)) {
       $this->categories->add($category);
-  //        $category->setUser($this);
+      //        $category->setUser($this);
     }
 
     return $this;

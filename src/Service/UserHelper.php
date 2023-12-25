@@ -5,7 +5,6 @@ namespace App\Service;
 use App\Entity\User;
 use App\Exception\SuperAdminDeleteForbiddenException;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Svc\LogBundle\Repository\SvcLogRepository;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -54,7 +53,7 @@ class UserHelper
       foreach (AppConstants::LOG_ACCOUNT_OPERATIONS as $sourceType) {
         $this->svcLogRep->batchDelete($user->getId(), $sourceType);
       }
-    } catch (Exception) {
+    } catch (\Exception) {
     }
 
     $session = $this->requestStack->getSession();

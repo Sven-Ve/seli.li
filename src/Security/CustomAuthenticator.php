@@ -30,11 +30,10 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
   final public const LOGIN_ROUTE = 'app_login';
 
   public function __construct(
-    private readonly UrlGeneratorInterface $urlGenerator, 
+    private readonly UrlGeneratorInterface $urlGenerator,
     private readonly EventLog $eventLog,
     private readonly Security $security
-    )
-  {
+  ) {
   }
 
   public function authenticate(Request $request): Passport
@@ -67,7 +66,6 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
     return new RedirectResponse($this->urlGenerator->generate('home'));
   }
 
-
   public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
   {
     $this->eventLog->log(0, AppConstants::LOG_TYPE_LOGIN_FAILED, ['level' => $this->eventLog::LEVEL_WARN, 'message' => 'Login failed (email="' . $request->request->get('email', '') . '")']);
@@ -79,7 +77,6 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
 
     return new RedirectResponse($url);
   }
-  
 
   protected function getLoginUrl(Request $request): string
   {

@@ -24,8 +24,8 @@ class LinkListController extends _BaseController
     $query = $request->query->get('q');
 
     $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), $query);
-//    dump($queryBuilder->getDQL());
-//    dump($queryBuilder->getQuery()->execute());
+    //    dump($queryBuilder->getDQL());
+    //    dump($queryBuilder->getQuery()->execute());
 
     $links = new Pagerfanta(new QueryAdapter($queryBuilder));
     $links->setMaxPerPage(200);

@@ -89,19 +89,19 @@ class Category extends _DefaultSuperclass implements \Stringable
     return $this;
   }
 
-/*
-  public function removeLink(Link $link): self
-  {
-      if ($this->links->removeElement($link)) {
-          // set the owning side to null (unless already changed)
-          if ($link->getCategory() === $this) {
-              $link->setCategory(null);
-          }
-      }
+  /*
+    public function removeLink(Link $link): self
+    {
+        if ($this->links->removeElement($link)) {
+            // set the owning side to null (unless already changed)
+            if ($link->getCategory() === $this) {
+                $link->setCategory(null);
+            }
+        }
 
-      return $this;
-  }
-*/
+        return $this;
+    }
+  */
   public function isDefaultCategory(): bool
   {
     return $this->defaultCategory;

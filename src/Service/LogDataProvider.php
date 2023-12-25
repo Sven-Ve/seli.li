@@ -58,7 +58,7 @@ class LogDataProvider extends GeneralDataProvider
   /**
    * get the text/description for a source ID / sourceType combination.
    */
-  public function getSourceIDText(int $sourceID, ?int $sourceType = null): string
+  public function getSourceIDText(int $sourceID, int $sourceType = null): string
   {
     if (in_array($sourceType, [AppConstants::LOG_TYPE_LINK_CREATED, AppConstants::LOG_TYPE_LINK_CALLED, AppConstants::LOG_TYPE_LINK_CHANGED, AppConstants::LOG_TYPE_LINK_DELETED])) {
       if (!$this->isLinkSourceIDsInitialized) {

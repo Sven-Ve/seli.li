@@ -23,26 +23,26 @@ class EntityBlameable
   }
 
   #[ORM\PreUpdate]
-    public function preUpdate(_DefaultSuperclass $entity, LifecycleEventArgs $event): void
-    {
-      $user = $this->security->getUser();
-      if ($user) {
-        $entity->setUpdatedBy($user->getId() ?? -1);
-      } else {
-        $entity->setUpdatedBy(-1);
-      }
-      $entity->setUpdatedAt(new \DateTime());
+  public function preUpdate(_DefaultSuperclass $entity, LifecycleEventArgs $event): void
+  {
+    $user = $this->security->getUser();
+    if ($user) {
+      $entity->setUpdatedBy($user->getId() ?? -1);
+    } else {
+      $entity->setUpdatedBy(-1);
     }
+    $entity->setUpdatedAt(new \DateTime());
+  }
 
   #[ORM\PrePersist]
-    public function prePersist(_DefaultSuperclass $entity, LifecycleEventArgs $event): void
-    {
-      $user = $this->security->getUser();
-      if ($user) {
-        $entity->setCreatedBy($user->getId() ?? -1);
-      } else {
-        $entity->setCreatedBy(-1);
-      }
-      $entity->setCreatedAt(new \DateTime());
+  public function prePersist(_DefaultSuperclass $entity, LifecycleEventArgs $event): void
+  {
+    $user = $this->security->getUser();
+    if ($user) {
+      $entity->setCreatedBy($user->getId() ?? -1);
+    } else {
+      $entity->setCreatedBy(-1);
     }
+    $entity->setCreatedAt(new \DateTime());
+  }
 }

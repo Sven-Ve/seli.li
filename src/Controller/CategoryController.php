@@ -7,7 +7,6 @@ use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Service\CategoryHelper;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -87,7 +86,7 @@ class CategoryController extends _BaseController
       try {
         $entityManager->remove($category);
         $entityManager->flush();
-      } catch (Exception) {
+      } catch (\Exception) {
         $this->addFlash('danger', 'Cannot delete this category. Maybe some redirects use it?');
       }
     }

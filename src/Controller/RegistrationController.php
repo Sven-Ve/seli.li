@@ -8,7 +8,6 @@ use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use App\Service\AppConstants;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Svc\LogBundle\Service\EventLog;
 use Svc\ParamBundle\Repository\ParamsRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -30,7 +29,7 @@ class RegistrationController extends _BaseController
   {
     try {
       $registerEnabled = $paramsRep->getBool(AppConstants::PARAM_REGISTER_ENABLED);
-    } catch (Exception) {
+    } catch (\Exception) {
       $registerEnabled = false;
     }
 
@@ -123,7 +122,7 @@ class RegistrationController extends _BaseController
           ->subject('Please Confirm your Email for ' . $this->getAppName())
           ->htmlTemplate('registration/confirmation_email.html.twig')
       );
-    } catch (Exception) {
+    } catch (\Exception) {
       return false;
     }
 

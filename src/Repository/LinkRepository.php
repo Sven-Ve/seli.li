@@ -61,7 +61,7 @@ class LinkRepository extends ServiceEntityRepository
   /**
    * @throws QueryException
    */
-  public function qbShowLinksByUser(User $user, ?string $query = null, Category $category = null): QueryBuilder
+  public function qbShowLinksByUser(User $user, string $query = null, Category $category = null): QueryBuilder
   {
     $queryBuilder = $this->createQueryBuilder('l');
 
