@@ -33,4 +33,26 @@ return [
     'tom-select' => [
         'version' => '2.3.1',
     ],
+    'tom-select/dist/css/tom-select.default.css' => [
+        'version' => '2.3.1',
+        'type' => 'css',
+    ],
+    'bootstrap' => [
+        'version' => '5.3.2',
+    ],
+    '@popperjs/core' => [
+        'version' => '2.11.8',
+    ],
+    'bootstrap/dist/css/bootstrap.min.css' => [
+        'version' => '5.3.2',
+        'type' => 'css',
+    ],
+    'fontawesome-free/css/fontawesome.css' => [
+        'version' => '1.0.4',
+        'type' => 'css',
+    ],
+    'fontawesome-free/css/solid.css' => [
+        'version' => '1.0.4',
+        'type' => 'css',
+    ],
 ];

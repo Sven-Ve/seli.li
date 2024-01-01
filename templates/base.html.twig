@@ -3,20 +3,20 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/images/apple-touch-icon.png') }}">
-		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/images/favicon-32x32.png') }}">
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/images/favicon-16x16.png') }}">
-		<link rel="manifest" href="{{ asset('build/images/site.webmanifest') }}">
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
+		<link rel="manifest" href="{{ asset('images/site.webmanifest') }}">
 		<title>
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
 
 		{% block css %}
-			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
 		{% block js_header %}{% endblock %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
 	</head>
 	<body class="d-flex flex-column h-100">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary"
@@ -65,11 +65,11 @@
 										{% trans %}Profile{% endtrans %}
                   </a>
 									<a class="dropdown-item" href="{{ path('svc_totp_manage') }}">
-										<i class="fa-solid fa-shield"></i>
+										<i class="fas fa-user-shield"></i>
 										{% trans %}Manage 2FA{% endtrans %}
                   </a>
 									<a class="dropdown-item" href="{{ path('export2excel') }}">
-										<i class="fa-solid fa-file-export"></i>
+										<i class="fas fa-file-export"></i>
 										{% trans %}Export to Excel{% endtrans %}
 									</a>
 									{% if is_granted('ROLE_ADMIN') %}
@@ -78,7 +78,7 @@
 											{% trans %}Users{% endtrans %}
                     </a>
 										<a class="dropdown-item" href="{{ path('svc_totp_user_admin') }}">
-											<i class="fa-solid fa-folder-minus"></i>
+											<i class="fas fa-user-secret"></i>
 											{% trans %}Admin 2FA{% endtrans %}
                     </a>
 										<a class="dropdown-item" href="{{ path('svc_param_index') }}">
@@ -162,7 +162,6 @@
 		</footer>
 
 		{% block javascript %}
-			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</body>
 </html>
