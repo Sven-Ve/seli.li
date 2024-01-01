@@ -14,7 +14,6 @@ return [
     Svc\AvatarBundle\SvcAvatarBundle::class => ['all' => true],
     Svc\UtilBundle\SvcUtilBundle::class => ['all' => true],
     Svc\ContactformBundle\SvcContactformBundle::class => ['all' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
     Symfony\UX\Autocomplete\AutocompleteBundle::class => ['all' => true],
     Svc\ProfileBundle\SvcProfileBundle::class => ['all' => true],
     Svc\ParamBundle\SvcParamBundle::class => ['all' => true],
