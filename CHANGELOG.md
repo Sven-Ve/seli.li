@@ -91,3 +91,7 @@
 ## Version 1.5.0
 *Sun, 24 Dec 2023 21:11:18 +0000*
 - update to symfony 7
+
+## Version 1.6.0
+*Tue, 02 Jan 2024 16:13:08 +0000*
+- switch to asset mapper on prod

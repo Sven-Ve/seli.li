@@ -28,18 +28,19 @@ return new class extends DefaultDeployer
     $this->log('<h3>Copying over the .env files</h3>');
     $this->runRemote('cp {{ deploy_dir }}/repo/.env {{ project_dir }}');
 
-    $this->log('<h3>Copying the build dir from dev to prod</h3>');
-    $this->runRemote('rm -rf /home/svenvett/tmp/seli.li.public.build');
-    $this->runRemote('mkdir -p /home/svenvett/tmp/seli.li.public.build');
-    $this->runLocal('scp -r public/build svenvett@svenvett.myhostpoint.ch:/home/svenvett/tmp/seli.li.public.build/');
-    $this->runRemote('mv /home/svenvett/tmp/seli.li.public.build/build {{ web_dir }}/');
+    // $this->log('<h3>Copying the build dir from dev to prod</h3>');
+    // $this->runRemote('rm -rf /home/svenvett/tmp/seli.li.public.build');
+    // $this->runRemote('mkdir -p /home/svenvett/tmp/seli.li.public.build');
+    // $this->runLocal('scp -r public/build svenvett@svenvett.myhostpoint.ch:/home/svenvett/tmp/seli.li.public.build/');
+    // $this->runRemote('mv /home/svenvett/tmp/seli.li.public.build/build {{ web_dir }}/');
   }
 
   // run some local or remote commands before the deployment is started
   public function beforeStartingDeploy()
   {
-    $this->log('<h3>Preparing wackpack env for prod</h3>');
-    $this->runLocal('yarn build');
+    $this->log('<h3>Compile asset mapper on prod prod</h3>');
+    // $this->runLocal('yarn build');
+    $this->runRemote('{{ console_bin }} asset-map:compile');
   }
 
   // run some local or remote commands after the deployment is finished
