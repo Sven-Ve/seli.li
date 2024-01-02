@@ -36,10 +36,9 @@ return new class extends DefaultDeployer
   }
 
   // run some local or remote commands before the deployment is started
-  public function beforeStartingDeploy()
+  public function beforeOptimizing()
   {
     $this->log('<h3>Compile asset mapper on prod prod</h3>');
-    // $this->runLocal('yarn build');
     $this->runRemote('{{ console_bin }} asset-map:compile');
   }
 
