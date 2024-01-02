@@ -4,5 +4,5 @@ import './styles/app.css'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import 'fontawesome-free/css/fontawesome.css'
-import 'fontawesome-free/css/solid.css'
+import '@fortawesome/fontawesome-free/css/fontawesome.min.css'
+import '@fortawesome/fontawesome-free/css/solid.min.css'

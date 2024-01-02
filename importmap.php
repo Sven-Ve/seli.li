@@ -47,12 +47,12 @@ return [
         'version' => '5.3.2',
         'type' => 'css',
     ],
-    'fontawesome-free/css/fontawesome.css' => [
-        'version' => '1.0.4',
+    '@fortawesome/fontawesome-free/css/fontawesome.min.css' => [
+        'version' => '6.5.1',
         'type' => 'css',
     ],
-    'fontawesome-free/css/solid.css' => [
-        'version' => '1.0.4',
+    '@fortawesome/fontawesome-free/css/solid.min.css' => [
+        'version' => '6.5.1',
         'type' => 'css',
     ],
 ];
