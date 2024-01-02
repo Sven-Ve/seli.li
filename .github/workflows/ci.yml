@@ -33,21 +33,8 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Cache node_modules
-      uses: actions/cache@v3
-      id: yarn-cache-node-modules
-      with:
-          path: node_modules
-          key: ${{ runner.os }}-yarn-cache-node-modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-cache-node-modules-
-
-    - name: Yarn install
-      if: steps.yarn-cache-node-modules.outputs.cache-hit != 'true'
-      run: yarn install
-
-    - name: Yarn build
-      run: yarn run encore production
+    - name: asset mapper compile
+      run: bin/console asset-map:compile
 
     - name: Run test suite
       run: composer run-script test
