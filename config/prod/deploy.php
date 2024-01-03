@@ -15,11 +15,11 @@ return new class extends DefaultDeployer
       ->repositoryUrl('git@github.com:Sven-Ve/seli.li.git')
       // the repository branch to deploy
       ->repositoryBranch('main')
-      ->remoteComposerBinaryPath('/usr/local/php82/bin/php /home/svenvett/bin/composer')
+      ->remoteComposerBinaryPath('/usr/local/php83/bin/php /home/svenvett/bin/composer')
       ->sharedFilesAndDirs(['.env.local', 'public/.htaccess'])
       ->composerInstallFlags('--prefer-dist --no-interaction --no-dev') // more logging, without quiet
       ->keepReleases(2)
-      ->remotePhpBinaryPath('/usr/local/php82/bin/php')
+      ->remotePhpBinaryPath('/usr/local/php83/bin/php')
     ;
   }
 
@@ -35,7 +35,7 @@ return new class extends DefaultDeployer
     // $this->runRemote('mv /home/svenvett/tmp/seli.li.public.build/build {{ web_dir }}/');
   }
 
-  // run some local or remote commands before the deployment is started
+  // run some local or remote commands before optimizing starts
   public function beforeOptimizing()
   {
     $this->log('<h3>Compile asset mapper on prod prod</h3>');

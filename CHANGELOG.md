@@ -95,3 +95,7 @@
 ## Version 1.6.0
 *Tue, 02 Jan 2024 16:13:08 +0000*
 - switch to asset mapper on prod
+
+## Version 1.6.1
+*Wed, 03 Jan 2024 21:04:59 +0000*
+- switch to php 8.3 in prod

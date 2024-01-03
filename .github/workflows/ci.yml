@@ -33,7 +33,7 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: asset mapper compile
+    - name: Asset mapper compile
       run: bin/console asset-map:compile
 
     - name: Run test suite
