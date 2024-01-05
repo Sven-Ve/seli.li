@@ -1,3 +1,16 @@
+{% macro sortArrow(sortName, sort, sortDirection) %}
+    {% if sort == sortName %}
+        {% if sortDirection == 'asc' %}
+          <i class="fa-solid fa-sort-up"></i>
+        {% else %}
+          <i class="fa-solid fa-sort-down"></i>
+        {% endif %}
+    {% else %}
+        <!-- up and down arrow -->
+        <i class="fa-solid fa-sort"></i>
+    {% endif %}
+{% endmacro %}
+
 <div class="d-flex justify-content-between">
   <h2 class="me-3"><i class="fas fa-directions"></i> 
     {% if currentCategory %}
@@ -14,9 +27,27 @@
   <table class="table table-sm">
     <thead>
     <tr>
-      <th>{% trans %}Name{% endtrans %}</th>
+      <th>
+        <a href="{{ path('app_link_index', {
+            ...app.request.query.all(),
+            ajax: 0,
+            sort: 'name',
+            sortDirection: sort == 'name' and sortDirection == 'asc' ? 'desc' : 'asc',
+          }) }}">
+          {% trans %}Name{% endtrans %} {{ _self.sortArrow('name', sort, sortDirection) }}
+       </a>        
+      </th>
       <th>{% trans %}Description{% endtrans %}</th>
-      <th>{% trans %}Category{% endtrans %}</th>
+      <th>
+        <a href="{{ path('app_link_index', {
+            ...app.request.query.all(),
+            ajax: 0,
+            sort: 'category',
+            sortDirection: sort == 'category' and sortDirection == 'asc' ? 'desc' : 'asc',
+          }) }}">
+        {% trans %}Category{% endtrans %} {{ _self.sortArrow('category', sort, sortDirection) }}
+       </a>        
+      </th>
       <th>{% trans %}Actions{% endtrans %}</th>
     </tr>
     </thead>

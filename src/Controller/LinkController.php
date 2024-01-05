@@ -11,6 +11,7 @@ use App\Service\CategoryHelper;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
 use Svc\LogBundle\Service\EventLog;
+use Svc\ParamBundle\Repository\ParamsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
@@ -23,27 +24,41 @@ class LinkController extends _BaseController
   public function index(
     LinkRepository $linkRep,
     CategoryRepository $categoryRep,
+    ParamsRepository $paramsRep,
     #[MapQueryParameter] int $page = 1,
     #[MapQueryParameter] int $catId = null,
     #[MapQueryParameter] bool $ajax = false,
+    #[MapQueryParameter] string $sort = 'name',
+    #[MapQueryParameter] string $sortDirection = 'asc',
   ): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
+
+    $linksPerPage = $paramsRep->getInteger(AppConstants::PARAM_LINKS_PER_PAGE);
+    if (null === $linksPerPage) {
+      $linksPerPage = 20;
+      $paramsRep->setInteger(AppConstants::PARAM_LINKS_PER_PAGE, $linksPerPage, 'max. Links per Page');
+    }
+
+    $validSorts = ['name', 'category'];
+    $sort = in_array($sort, $validSorts) ? $sort : 'name';
+    $sortDirection = in_array($sortDirection, ['asc', 'desc']) ? $sortDirection : 'asc';
+
     $currentCategory = null;
     if ($catId) {
       $currentCategory = $categoryRep->findOneBy(['id' => $catId, 'user' => $this->getUser()]);
       if ($currentCategory) {
-        $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), null, $currentCategory);
+        $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), null, $currentCategory, $sort, $sortDirection);
       } else {
         $queryBuilder = null;
       }
     } else {
-      $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser());
+      $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), null, null, $sort, $sortDirection);
     }
     if ($queryBuilder) {
       $links = Pagerfanta::createForCurrentPageWithMaxPerPage(
         new QueryAdapter($queryBuilder),
         $page,
-        15
+        $linksPerPage
       );
       $haveToPaginate = $links->haveToPaginate();
     } else {
@@ -58,6 +73,8 @@ class LinkController extends _BaseController
       'categories' => $categoryRep->getCategoryByUser($this->getUser()),
       'currentCategory' => $currentCategory,
       'haveToPaginate' => $haveToPaginate,
+      'sort' => $sort,
+      'sortDirection' => $sortDirection,
     ]);
   }
 

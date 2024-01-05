@@ -61,8 +61,13 @@ class LinkRepository extends ServiceEntityRepository
   /**
    * @throws QueryException
    */
-  public function qbShowLinksByUser(User $user, string $query = null, Category $category = null): QueryBuilder
-  {
+  public function qbShowLinksByUser(
+    User $user,
+    string $query = null,
+    Category $category = null,
+    string $sort = null,
+    string $direction = 'ASC'
+  ): QueryBuilder {
     $queryBuilder = $this->createQueryBuilder('l');
 
     if ($query) {
@@ -82,11 +87,21 @@ class LinkRepository extends ServiceEntityRepository
     }
     $queryBuilder->addCriteria(self::createUserCriteria($user));
 
+    if ($sort) {
+      if ($sort == 'category') {
+        $queryBuilder->orderBy('c.name', $direction);
+      } else {
+        $queryBuilder->orderBy('l.' . $sort, $direction);
+      }
+    } else {
+      $queryBuilder
+        ->addOrderBy('c.name', 'asc')
+        ->addOrderBy('l.name', 'asc');
+    }
+
     return $queryBuilder
       ->addSelect('c')
-      ->leftJoin('l.category', 'c')
-      ->addOrderBy('c.name', 'asc')
-      ->addOrderBy('l.name', 'asc');
+      ->leftJoin('l.category', 'c');
   }
 
   private static function extractSearchTerms(string $searchQuery): array

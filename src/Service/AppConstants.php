@@ -51,4 +51,5 @@ class AppConstants
 
   // Parameter
   final public const PARAM_REGISTER_ENABLED = 'registrationEnabled';
+  final public const PARAM_LINKS_PER_PAGE = 'linksPerPage';
 }
