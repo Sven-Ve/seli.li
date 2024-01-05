@@ -13,18 +13,22 @@ use Pagerfanta\Pagerfanta;
 use Svc\LogBundle\Service\EventLog;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/manage/link')]
 class LinkController extends _BaseController
 {
   #[Route('/', name: 'app_link_index', methods: ['GET'])]
-  public function index(LinkRepository $linkRep, CategoryRepository $categoryRep, Request $request): Response
-  {
+  public function index(
+    LinkRepository $linkRep,
+    CategoryRepository $categoryRep,
+    #[MapQueryParameter] int $page = 1,
+    #[MapQueryParameter] int $catId = null,
+    #[MapQueryParameter] bool $ajax = false,
+  ): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
     $currentCategory = null;
-    $catId = $request->query->get('catId');
-    $page = $request->query->get('page', 1);
     if ($catId) {
       $currentCategory = $categoryRep->findOneBy(['id' => $catId, 'user' => $this->getUser()]);
       if ($currentCategory) {
@@ -36,16 +40,18 @@ class LinkController extends _BaseController
       $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser());
     }
     if ($queryBuilder) {
-      $links = new Pagerfanta(new QueryAdapter($queryBuilder));
-      $links->setMaxPerPage(25);
-      $links->setCurrentPage($page);
+      $links = Pagerfanta::createForCurrentPageWithMaxPerPage(
+        new QueryAdapter($queryBuilder),
+        $page,
+        15
+      );
       $haveToPaginate = $links->haveToPaginate();
     } else {
       $links = null;
       $haveToPaginate = false;
     }
 
-    $template = $request->query->get('ajax') ? '_list.html.twig' : 'index.html.twig';
+    $template = $ajax ? '_list.html.twig' : 'index.html.twig';
 
     return $this->render('link/' . $template, [
       'links' => $links,

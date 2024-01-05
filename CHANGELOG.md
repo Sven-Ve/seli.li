@@ -99,3 +99,7 @@
 ## Version 1.6.1
 *Wed, 03 Jan 2024 21:04:59 +0000*
 - switch to php 8.3 in prod
+
+## Version 1.6.2
+*Fri, 05 Jan 2024 14:33:20 +0000*
+- improvements in pagerfanta

@@ -58,8 +58,15 @@
 </div>
 
 {% if haveToPaginate %}
-  {{ pagerfanta(links, 'twig', {
-    'routeName' : 'app_link_index',
-    'routeParams': {'catId' : currentCategory.id | default(null)}
-  }) }}
+  <div class='row'>
+    <div class='col'>
+      {{ pagerfanta(links, 'twig', {
+        'routeName' : 'app_link_index',
+        'routeParams': {'catId' : currentCategory.id | default(null)}
+      }) }}
+    </div>
+    <div class='col text-end'>
+      Page {{ links.currentPage }} / {{ links.nbPages }}
+    </div>
+  </div>
 {% endif %}

@@ -8,28 +8,28 @@ use App\Service\AppConstants;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
 use Svc\LogBundle\Service\EventLog;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/l/')]
 class LinkListController extends _BaseController
 {
   #[Route('', name: 'link_list_index')]
-  public function index(LinkRepository $linkRep, Request $request): Response
-  {
+  public function index(
+    LinkRepository $linkRep,
+    #[MapQueryParameter] int $page = 1,
+    #[MapQueryParameter('q')] string $query = null,
+  ): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
 
-    $page = $request->query->get('page', 1);
-    $query = $request->query->get('q');
-
     $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), $query);
-    //    dump($queryBuilder->getDQL());
-    //    dump($queryBuilder->getQuery()->execute());
 
-    $links = new Pagerfanta(new QueryAdapter($queryBuilder));
-    $links->setMaxPerPage(200);
-    $links->setCurrentPage($page);
+    $links = Pagerfanta::createForCurrentPageWithMaxPerPage(
+      new QueryAdapter($queryBuilder),
+      $page,
+      200
+    );
     $haveToPaginate = $links->haveToPaginate();
 
     return $this->render('link_list/index.html.twig', [
