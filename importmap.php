@@ -55,4 +55,7 @@ return [
         'version' => '6.5.1',
         'type' => 'css',
     ],
+    '@hotwired/turbo' => [
+        'version' => '7.3.0',
+    ],
 ];

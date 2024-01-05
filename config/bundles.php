@@ -29,4 +29,5 @@ return [
     Sentry\SentryBundle\SentryBundle::class => ['dev' => false, 'prod' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Karser\Recaptcha3Bundle\KarserRecaptcha3Bundle::class => ['all' => true],
+    Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
 ];
