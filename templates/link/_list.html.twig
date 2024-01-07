@@ -12,15 +12,15 @@
 {% endmacro %}
 
 <div class="d-flex justify-content-between">
-  <h2 class="me-3"><i class="fas fa-directions"></i> 
+  <h3 class="me-3"><i class="fas fa-directions"></i> 
     {% if currentCategory %}
       {% trans %}Links for category{% endtrans %}
       {{ currentCategory.name }}
     {% else %}
       {% trans %}All Links{% endtrans %}
     {% endif %}
-  </h2>
-  <a href="{{ path('app_link_new') }}" class="btn btn-sm btn-success">{% trans %}New{% endtrans %}</a>
+  </h3>
+  <a href="{{ path('app_link_new') }}" type="button" class="btn btn-primary btn-success" role="button">{% trans %}New{% endtrans %}</a>
 </div>
 
 <div class='table-responsive-md'>

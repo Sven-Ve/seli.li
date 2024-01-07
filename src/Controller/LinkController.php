@@ -92,7 +92,7 @@ class LinkController extends _BaseController
     if ($form->isSubmitted() && $form->isValid()) {
       $linkRepository->save($link, true);
       $eventLog->log($link->getId(), AppConstants::LOG_TYPE_LINK_CREATED, ['level' => EventLog::LEVEL_INFO]);
-
+      $this->addFlash('success', 'Link added.');
       return $this->redirectToRoute('app_link_index', [], Response::HTTP_SEE_OTHER);
     }
 
@@ -113,6 +113,7 @@ class LinkController extends _BaseController
     if ($form->isSubmitted() && $form->isValid()) {
       $linkRepository->save($link, true);
       $eventLog->log($link->getId(), AppConstants::LOG_TYPE_LINK_CHANGED, ['level' => EventLog::LEVEL_INFO]);
+      $this->addFlash('success', 'Link saved.');
 
       return $this->redirectToRoute('app_link_index', [], Response::HTTP_SEE_OTHER);
     }
@@ -131,6 +132,7 @@ class LinkController extends _BaseController
     if ($this->isCsrfTokenValid('delete' . $link->getId(), $request->request->get('_token'))) {
       $eventLog->log($link->getId(), AppConstants::LOG_TYPE_LINK_DELETED, ['level' => EventLog::LEVEL_WARN, 'message' => 'Link deleted: ' . $link->getName()]);
       $linkRepository->remove($link, true);
+      $this->addFlash('success', 'Link deleted.');
     }
 
     return $this->redirectToRoute('app_link_index', [], Response::HTTP_SEE_OTHER);

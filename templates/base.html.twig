@@ -12,7 +12,7 @@
     {% block importmap %}{{ importmap('app') }}{% endblock %}
 	</head>
 	<body class="d-flex flex-column h-100">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary"
+		<nav class="navbar navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark"
       {{ is_granted('IS_IMPERSONATOR') ? 'style="background-color: red !important"' }}
     >
 			<div class="container-fluid">
@@ -123,7 +123,6 @@
 						{% endif %}
 
 					</ul>
-
 				</div>
 			</div>
 		</nav>
