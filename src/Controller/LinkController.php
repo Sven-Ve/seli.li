@@ -93,6 +93,7 @@ class LinkController extends _BaseController
       $linkRepository->save($link, true);
       $eventLog->log($link->getId(), AppConstants::LOG_TYPE_LINK_CREATED, ['level' => EventLog::LEVEL_INFO]);
       $this->addFlash('success', 'Link added.');
+
       return $this->redirectToRoute('app_link_index', [], Response::HTTP_SEE_OTHER);
     }
 

@@ -38,6 +38,10 @@
             "modal": {
                 "enabled": true,
                 "fetch": "lazy"
+            },
+            "toast": {
+                "enabled": true,
+                "fetch": "lazy"
             }
         },
         "@symfony/ux-autocomplete": {

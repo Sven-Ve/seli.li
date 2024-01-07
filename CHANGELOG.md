@@ -103,3 +103,7 @@
 ## Version 1.6.2
 *Fri, 05 Jan 2024 14:33:20 +0000*
 - improvements in pagerfanta
+
+## Version 1.7.0
+*Sun, 07 Jan 2024 14:48:12 +0000*
+- switch to ux-turbo

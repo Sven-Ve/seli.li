@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6addee82512137a2ff8117e8a2878289",
+    "content-hash": "bbe6403409c7fa2395978dafb17e0725",
     "packages": [
         {
             "name": "babdev/pagerfanta-bundle",
@@ -4954,16 +4954,16 @@
         },
         {
             "name": "svc/util-bundle",
-            "version": "5.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-util-bundle.git",
-                "reference": "442fc6c6ef15da801495ecb838462647121bb3f2"
+                "reference": "d2ec56d9ec26a5b8cc71a61922141f9ce9caab05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-util-bundle/zipball/442fc6c6ef15da801495ecb838462647121bb3f2",
-                "reference": "442fc6c6ef15da801495ecb838462647121bb3f2",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-util-bundle/zipball/d2ec56d9ec26a5b8cc71a61922141f9ce9caab05",
+                "reference": "d2ec56d9ec26a5b8cc71a61922141f9ce9caab05",
                 "shasum": ""
             },
             "require": {
@@ -5002,9 +5002,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-util-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-util-bundle/tree/5.1.0"
+                "source": "https://github.com/Sven-Ve/svc-util-bundle/tree/5.2.0"
             },
-            "time": "2024-01-01T13:58:01+00:00"
+            "time": "2024-01-07T14:38:06+00:00"
         },
         {
             "name": "symfony/asset",
