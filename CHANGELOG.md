@@ -107,3 +107,7 @@
 ## Version 1.7.0
 *Sun, 07 Jan 2024 14:48:12 +0000*
 - switch to ux-turbo
+
+## Version 1.7.1
+*Sun, 07 Jan 2024 14:56:58 +0000*
+- switch to ux-turbo
