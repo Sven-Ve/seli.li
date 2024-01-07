@@ -4,7 +4,7 @@
 	</h5>
 	<ul class="nav flex-column mb4"
       {{ stimulus_controller('select-category', {
-        'url': path('app_link_index', { ajax: 1 })
+        'url': path('app_link_index', { ajax: 1, 'sort': sort, 'sortDirection': sortDirection })
       }) }}
   >
 		<li class="nav-item">
