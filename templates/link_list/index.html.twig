@@ -8,7 +8,8 @@
   {{ include('link_list/_search.html.twig') }}
 </div>
 
-<div class="accordion" id="accordionLinks">
+<turbo-frame id="link-list" data-turbo-action="advance">
+<div class="accordion" id="accordionLinks" >
 
   {% set lastCat = '' %}
   {% for link in links %}
@@ -52,10 +53,10 @@
         </div>
       </div>
     </div>
-
   {% if haveToPaginate %}
     {{ pagerfanta(links, 'twig', {
         'routeName' : 'link_list_index',
     }) }}
   {% endif %}
+</turbo-frame>
 {% endblock %}

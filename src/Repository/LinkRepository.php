@@ -71,16 +71,22 @@ class LinkRepository extends ServiceEntityRepository
     $queryBuilder = $this->createQueryBuilder('l');
 
     if ($query) {
-      $searchTerms = self::extractSearchTerms($query);
-      if (\count($searchTerms) > 0) {
-        foreach ($searchTerms as $key => $term) {
-          $queryBuilder
-            ->orWhere('l.name LIKE :v_' . $key)
-            ->orWhere('l.description LIKE :v_' . $key)
-            ->setParameter('v_' . $key, '%' . $term . '%');
-        }
-      }
+      $queryBuilder
+      ->orWhere('l.name LIKE :query')
+      ->orWhere('l.description LIKE :query')
+      ->setParameter('query', '%' . $query . '%');
     }
+    /*     if ($query) {
+          $searchTerms = self::extractSearchTerms($query);
+          if (\count($searchTerms) > 0) {
+            foreach ($searchTerms as $key => $term) {
+              $queryBuilder
+                ->orWhere('l.name LIKE :v_' . $key)
+                ->orWhere('l.description LIKE :v_' . $key)
+                ->setParameter('v_' . $key, '%' . $term . '%');
+            }
+          }
+        } */
 
     if ($category) {
       $queryBuilder->addCriteria(self::createCategoryCriteria($category));
@@ -103,15 +109,16 @@ class LinkRepository extends ServiceEntityRepository
       ->addSelect('c')
       ->leftJoin('l.category', 'c');
   }
+  /*
+    private static function extractSearchTerms(string $searchQuery): array
+    {
+      $searchQuery = u($searchQuery)->replaceMatches('/[[:space:]]+/', ' ')->trim();
+      $terms = array_unique($searchQuery->split(' '));
 
-  private static function extractSearchTerms(string $searchQuery): array
-  {
-    $searchQuery = u($searchQuery)->replaceMatches('/[[:space:]]+/', ' ')->trim();
-    $terms = array_unique($searchQuery->split(' '));
-
-    // ignore the search terms that are too short
-    return array_filter($terms, static function ($term) {
-      return 2 <= $term->length();
-    });
-  }
+      // ignore the search terms that are too short
+      return array_filter($terms, static function ($term) {
+        return 2 <= $term->length();
+      });
+    }
+   */
 }

@@ -111,3 +111,7 @@
 ## Version 1.7.1
 *Sun, 07 Jan 2024 14:56:58 +0000*
 - switch to ux-turbo
+
+## Version 1.7.2
+*Mon, 08 Jan 2024 21:11:22 +0000*
+- autosubmit on search links
