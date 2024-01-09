@@ -42,12 +42,7 @@ class RegistrationFormType extends AbstractType
             'max' => 4096,
           ]),
         ],
-        'attr' => ['data-svc--util-bundle--show-password-target' => 'passwordFld'],
-        'row_attr' => [
-          'data-controller' => 'svc--util-bundle--show-password',
-          'data-svc--util-bundle--show-password-show-text-value' => 'Show password',
-          'data-svc--util-bundle--show-password-hide-text-value' => 'Hide password',
-        ],
+        'toggle' => true
       ])
       ->add('country', CountryType::class, [
         'preferred_choices' => ['CH', 'DE', 'US'],

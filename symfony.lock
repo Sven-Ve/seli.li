@@ -393,6 +393,9 @@
             "config/routes/ux_autocomplete.yaml"
         ]
     },
+    "symfony/ux-toggle-password": {
+        "version": "v2.13.2"
+    },
     "symfony/ux-turbo": {
         "version": "v2.13.2"
     },

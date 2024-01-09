@@ -19,27 +19,24 @@
 
     <div class="form-label-group form-floating">
       <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
-             placeholder="Email" required autofocus>
+        placeholder="Email" required autofocus>
       <label for="inputEmail">{% trans %}Email{% endtrans %}</label>
     </div>
 
-    <div class="form-label-group form-floating"
-      {{ stimulus_controller('svc--util-bundle--show-password',{
-        showText: 'Show password' | trans,
-        hideText: 'Hide password' | trans
-      }) }}
-    >
+    <br/></br>
+    <div class="form-label-group form-floating toggle-password-container">
       <input type="password" name="password" id="inputPassword" class="form-control" required
-             placeholder="{% trans %}Password{% endtrans %}" data-svc--util-bundle--show-password-target="passwordFld">
-      <label for="inputPassword">{% trans %}Password{% endtrans %}</label>
-      <i class="fas fa-eye" data-action="click->svc--util-bundle--show-password#toogleVisibility"
-         {{ stimulus_target('svc--util-bundle--show-password', 'toggleBtn') }}
-         title='{% trans %}Show password{% endtrans %}'>
-      </i>
+        placeholder="Password"
+      {{ stimulus_controller('symfony/ux-toggle-password/toggle-password', {
+          buttonClasses: ['toggle-password-button']
+      }) }}
+      >
+      <label for="inputPassword">Password</label>
     </div>
 
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
+    <br/>
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" name="_remember_me"> {% trans %}Remember me{% endtrans %}</label>
