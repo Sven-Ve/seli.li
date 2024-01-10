@@ -12,7 +12,7 @@
                 "fetch": "lazy"
             },
             "mclipboard": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "lazy"
             },
             "alert": {
@@ -24,11 +24,11 @@
                 "fetch": "lazy"
             },
             "wysiwyg": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "lazy"
             },
             "show-password": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "lazy"
             },
             "reload-content": {
@@ -47,7 +47,7 @@
         "@symfony/ux-autocomplete": {
             "autocomplete": {
                 "enabled": true,
-                "fetch": "eager",
+                "fetch": "lazy",
                 "autoimport": {
                     "tom-select/dist/css/tom-select.default.css": true,
                     "tom-select/dist/css/tom-select.bootstrap5.css": false
@@ -57,7 +57,7 @@
         "@symfony/ux-toggle-password": {
             "toggle-password": {
                 "enabled": true,
-                "fetch": "eager",
+                "fetch": "lazy",
                 "autoimport": {
                     "@symfony/ux-toggle-password/dist/style.min.css": true
                 }

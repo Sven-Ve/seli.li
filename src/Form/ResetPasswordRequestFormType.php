@@ -13,14 +13,17 @@ class ResetPasswordRequestFormType extends AbstractType
   public function buildForm(FormBuilderInterface $builder, array $options): void
   {
     $builder
-      ->add('email', EmailType::class, [
-        'constraints' => [
-          new NotBlank([
-            'message' => 'Please enter your email',
-          ]),
-        ],
-        'attr' => ['autofocus' => true],
-      ]);
+        ->add('email', EmailType::class, [
+          'attr' => [
+            'autocomplete' => 'email',
+            'autofocus' => true,
+          ],
+          'constraints' => [
+            new NotBlank([
+              'message' => 'Please enter your email',
+            ]),
+          ],
+        ]);
   }
 
   public function configureOptions(OptionsResolver $resolver): void

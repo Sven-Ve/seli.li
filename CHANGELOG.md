@@ -115,3 +115,7 @@
 ## Version 1.7.2
 *Mon, 08 Jan 2024 21:11:22 +0000*
 - autosubmit on search links
+
+## Version 1.7.3
+*Wed, 10 Jan 2024 20:42:32 +0000*
+- re-add password reset

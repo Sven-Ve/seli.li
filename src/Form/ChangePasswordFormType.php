@@ -4,7 +4,6 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
@@ -30,9 +29,9 @@ class ChangePasswordFormType extends AbstractType
           'max' => 4096,
         ]),
       ],
-      'toggle' => true
+      'toggle' => true,
     ]);
-}
+  }
 
   public function configureOptions(OptionsResolver $resolver): void
   {

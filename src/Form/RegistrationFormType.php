@@ -42,7 +42,7 @@ class RegistrationFormType extends AbstractType
             'max' => 4096,
           ]),
         ],
-        'toggle' => true
+        'toggle' => true,
       ])
       ->add('country', CountryType::class, [
         'preferred_choices' => ['CH', 'DE', 'US'],
