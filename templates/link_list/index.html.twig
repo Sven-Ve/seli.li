@@ -5,7 +5,7 @@
 {% block body %}
 <div class="d-flex justify-content-between">
   <h2>{% trans %}All links{% endtrans %}</h2>
-  {{ include('link_list/_search.html.twig') }}
+  {{ include('_common/_search.html.twig') }}
 </div>
 
 <turbo-frame id="link-list" data-turbo-action="advance">
