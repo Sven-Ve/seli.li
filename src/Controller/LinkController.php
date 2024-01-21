@@ -27,9 +27,9 @@ class LinkController extends _BaseController
     ParamsRepository $paramsRep,
     #[MapQueryParameter] int $page = 1,
     #[MapQueryParameter] int $catId = null,
-    #[MapQueryParameter] bool $ajax = false,
     #[MapQueryParameter] string $sort = 'name',
     #[MapQueryParameter] string $sortDirection = 'asc',
+    #[MapQueryParameter('q')] string $query = null,
   ): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
 
@@ -47,12 +47,12 @@ class LinkController extends _BaseController
     if ($catId) {
       $currentCategory = $categoryRep->findOneBy(['id' => $catId, 'user' => $this->getUser()]);
       if ($currentCategory) {
-        $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), null, $currentCategory, $sort, $sortDirection);
+        $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), $query, $currentCategory, $sort, $sortDirection);
       } else {
         $queryBuilder = null;
       }
     } else {
-      $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), null, null, $sort, $sortDirection);
+      $queryBuilder = $linkRep->qbShowLinksByUser($this->getUser(), $query, null, $sort, $sortDirection);
     }
     if ($queryBuilder) {
       $links = Pagerfanta::createForCurrentPageWithMaxPerPage(
@@ -66,15 +66,14 @@ class LinkController extends _BaseController
       $haveToPaginate = false;
     }
 
-    $template = $ajax ? '_list.html.twig' : 'index.html.twig';
-
-    return $this->render('link/' . $template, [
+    return $this->render('link/index.html.twig', [
       'links' => $links,
       'categories' => $categoryRep->getCategoryByUser($this->getUser()),
       'currentCategory' => $currentCategory,
       'haveToPaginate' => $haveToPaginate,
       'sort' => $sort,
       'sortDirection' => $sortDirection,
+      'q' => $query,
     ]);
   }
 

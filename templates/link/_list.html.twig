@@ -11,6 +11,8 @@
     {% endif %}
 {% endmacro %}
 
+<turbo-frame id="link-admin-list" data-turbo-action="advance">
+
 <div class="d-flex justify-content-between">
   <h3 class="me-3"><i class="fas fa-directions"></i> 
     {% if currentCategory %}
@@ -30,7 +32,6 @@
       <th>
         <a href="{{ path('app_link_index', {
             ...app.request.query.all(),
-            ajax: 0,
             sort: 'name',
             sortDirection: sort == 'name' and sortDirection == 'asc' ? 'desc' : 'asc',
           }) }}">
@@ -41,7 +42,6 @@
       <th>
         <a href="{{ path('app_link_index', {
             ...app.request.query.all(),
-            ajax: 0,
             sort: 'category',
             sortDirection: sort == 'category' and sortDirection == 'asc' ? 'desc' : 'asc',
           }) }}">
@@ -63,7 +63,7 @@
         <td>{{ link.description }}</td>
         <td>{{ link.category | default('-') }}</td>
         <td>
-          <a href="{{ path('app_link_edit', {'id': link.id}) }}"
+          <a href="{{ path('app_link_edit', {'id': link.id}) }}" data-turbo-frame="_top"
              class='btn btn-sm btn-outline-info'>{% trans %}Edit{% endtrans %}</a>
           <a href="{{ link.url }}" target='_blank'
              class='btn btn-sm btn-outline-primary'>{% trans %}Test{% endtrans %}</a>
@@ -100,4 +100,5 @@
       Page {{ links.currentPage }} / {{ links.nbPages }}
     </div>
   </div>
+</turbo-frame>
 {% endif %}

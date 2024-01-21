@@ -21,9 +21,6 @@ return [
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
-    'sweetalert2' => [
-        'version' => '11.10.2',
-    ],
     '@ckeditor/ckeditor5-build-classic' => [
         'version' => '40.2.0',
     ],
@@ -60,5 +57,8 @@ return [
     ],
     'debounce' => [
         'version' => '2.0.0',
+    ],
+    'sweetalert2' => [
+        'version' => '11.10.3',
     ],
 ];

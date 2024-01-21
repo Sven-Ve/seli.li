@@ -1,7 +1,6 @@
-{% trans_default_domain 'VideoBundle' %}
 <form 
   data-controller="autosubmit"
-  data-turbo-frame="link-list"
+  data-turbo-frame="{{ frame | default ('link-list') }}"
 >
   <div class="input-group input-group-sm mb-3">
     <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-search"></i></span>
