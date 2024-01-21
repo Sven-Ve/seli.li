@@ -42,6 +42,10 @@
             "toast": {
                 "enabled": true,
                 "fetch": "lazy"
+            },
+            "autosubmit": {
+                "enabled": true,
+                "fetch": "lazy"
             }
         },
         "@symfony/ux-autocomplete": {

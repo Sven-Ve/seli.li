@@ -1,5 +1,5 @@
 <form 
-  data-controller="autosubmit"
+  data-controller="svc--util-bundle--autosubmit"
   data-turbo-frame="{{ frame | default ('link-list') }}"
 >
   <div class="input-group input-group-sm mb-3">
@@ -9,7 +9,7 @@
       autofocus
       name="q" value="{{ q }}" 
       placeholder="{% trans %}Search links{% endtrans %}"
-      data-action="autosubmit#debouncedSubmit"
+      data-action="svc--util-bundle--autosubmit#debouncedSubmit"
     >
   </div>
 </form>
