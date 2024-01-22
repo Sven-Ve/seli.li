@@ -61,4 +61,8 @@ return [
     'sweetalert2' => [
         'version' => '11.10.3',
     ],
+    'tom-select/dist/css/tom-select.bootstrap5.css' => [
+        'version' => '2.3.1',
+        'type' => 'css',
+    ],
 ];
