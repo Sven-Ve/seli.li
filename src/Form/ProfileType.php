@@ -24,7 +24,7 @@ class ProfileType extends AbstractType
       ->add('country', CountryType::class, [
         'preferred_choices' => ['CH', 'DE', 'US'],
         'autocomplete' => true,
-        ],
+      ],
       )
       ->add('captcha', Recaptcha3Type::class, [
         'constraints' => new Recaptcha3(),
