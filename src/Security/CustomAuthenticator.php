@@ -68,13 +68,7 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
   public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
   {
     $this->eventLog->log(0, AppConstants::LOG_TYPE_LOGIN_FAILED, ['level' => $this->eventLog::LEVEL_WARN, 'message' => 'Login failed (email="' . $request->request->get('email', '') . '")']);
-    // if ($request->hasSession()) {
-    //   $this->security->logout(false);
-    // }
-
-    $url = $this->getLoginUrl($request);
-
-    return new RedirectResponse($url);
+    return parent::onAuthenticationFailure($request, $exception);
   }
 
   protected function getLoginUrl(Request $request): string
