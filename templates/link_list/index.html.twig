@@ -34,9 +34,15 @@
     {% endif %}
 
             <li>
-              <a href="{{ path('link_list_call', {'id': link.id }) }}" target="_blank">
-                {{ link.name | highlight (q | default(null)) }}
-              </a>
+              {% if link.url starts with 'mailto:' %}
+                <a href="{{ link.url }}">
+                  {{ link.name | highlight (q | default(null)) }}
+                </a>
+              {% else %}
+                <a href="{{ path('link_list_call', {'id': link.id }) }}" target="_blank">
+                  {{ link.name | highlight (q | default(null)) }}
+                </a>
+              {% endif %}
               {% if link.isFavorite %}
                 {{ include('_common/_favourite.html.twig') }}
               {% endif %}

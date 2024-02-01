@@ -20,6 +20,10 @@ svc_log:
     # Need the user the role ROLE_ADMIN for get statistics (default yes)
     need_admin_for_stats: true
 
+    logger:
+      use_logger: true
+      logger_min_log_level: 4
+
 when@prod:
     svc_log:
         # Minimal log level

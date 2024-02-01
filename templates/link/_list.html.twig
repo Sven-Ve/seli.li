@@ -22,7 +22,9 @@
       {% trans %}All Links{% endtrans %}
     {% endif %}
   </h3>
-  <a href="{{ path('app_link_new') }}" type="button" class="btn btn-primary btn-success" role="button">{% trans %}New{% endtrans %}</a>
+  <a href="{{ path('app_link_new') }}" type="button" class="btn btn-primary btn-success" role="button" data-turbo-frame="_top">
+    {% trans %}New{% endtrans %}
+  </a>
 </div>
 
 <div class='table-responsive-md'>

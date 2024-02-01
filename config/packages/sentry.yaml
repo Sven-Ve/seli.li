@@ -1,5 +1,0 @@
-when@prod:
-    sentry:
-        dsn: '%env(SENTRY_DSN)%'
-        options:
-            release: seli.li@1.7.3

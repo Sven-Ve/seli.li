@@ -4,11 +4,11 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Link;
+use App\Form\Type\UrlMailType;
 use App\Repository\CategoryRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -25,7 +25,7 @@ class LinkType extends AbstractType
       ->add('name', TextType::class, [
         'attr' => ['autofocus' => true],
       ])
-      ->add('url', UrlType::class, [
+      ->add('url', UrlMailType::class, [
         'label' => 'URL',
         'default_protocol' => 'https',
       ])

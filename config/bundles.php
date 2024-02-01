@@ -26,9 +26,9 @@ return [
     Svc\VersioningBundle\SvcVersioningBundle::class => ['dev' => true, 'test' => true],
     EasyCorp\Bundle\EasyDeployBundle\EasyDeployBundle::class => ['dev' => true, 'test' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
-    Sentry\SentryBundle\SentryBundle::class => ['dev' => false, 'prod' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Karser\Recaptcha3Bundle\KarserRecaptcha3Bundle::class => ['all' => true],
     Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
     Symfony\UX\TogglePassword\TogglePasswordBundle::class => ['all' => true],
+    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
 ];
