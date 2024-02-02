@@ -6,7 +6,6 @@ use App\Service\AppConstants;
 use ReCaptcha\ReCaptcha;
 use Svc\LogBundle\Service\EventLog;
 use Svc\UtilBundle\Service\NetworkHelper;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +30,7 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
 
   public function __construct(
     private readonly UrlGeneratorInterface $urlGenerator,
-    private readonly EventLog $eventLog,
+    private readonly EventLog $eventLog
   ) {
   }
 
@@ -68,6 +67,7 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
   public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
   {
     $this->eventLog->log(0, AppConstants::LOG_TYPE_LOGIN_FAILED, ['level' => $this->eventLog::LEVEL_ERROR, 'message' => 'Login failed (email="' . $request->request->get('email', '') . '")']);
+
     return parent::onAuthenticationFailure($request, $exception);
   }
 

@@ -4,54 +4,55 @@
 
 
 {% block body %}
-  <form method="post" class="form-small" id="loginForm">
-    {% if error %}
-      <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<form method="post" class="form-signin" id="loginForm">
+  {% if error %}
+    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+  {% endif %}
 
-    {% if app.user %}
-      <div class="mb-3">
-        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-      </div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">{% trans %}Please sign in{% endtrans %}</h1>
-
-    <div class="form-label-group form-floating">
-      <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
-        placeholder="Email" required autofocus>
-      <label for="inputEmail">{% trans %}Email{% endtrans %}</label>
+  {% if app.user %}
+    <div class="mb-3">
+      You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
     </div>
+  {% endif %}
 
-    <br/></br>
-    <div class="form-label-group form-floating toggle-password-container">
-      <input type="password" name="password" id="inputPassword" class="form-control" required
-        placeholder="Password"
-      {{ stimulus_controller('symfony/ux-toggle-password/toggle-password', {
-          buttonClasses: ['toggle-password-button']
-      }) }}
-      >
-      <label for="inputPassword">Password</label>
-    </div>
+  <h1 class="h3 mb-3 font-weight-normal">
+    <i class="fa-solid fa-right-to-bracket"></i><br/>
+    {% trans %}Please sign in{% endtrans %}
+  </h1>
 
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+  <div class="form-floating">
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+      placeholder="Email" required autofocus>
+    <label for="inputEmail">{% trans %}Email{% endtrans %}</label>
+  </div>
 
-    <br/>
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" name="_remember_me"> {% trans %}Remember me{% endtrans %}</label>
-    </div>
+  <br/><br/>
+  <div class="form-floating toggle-password-container">
+    <input type="password" name="password" id="inputPassword" class="form-control" required
+      placeholder="Password"
+    {{ stimulus_controller('symfony/ux-toggle-password/toggle-password', {
+        buttonClasses: ['toggle-password-button']
+    }) }}
+    >
+    <label for="inputPassword">Password</label>
+  </div>
 
-    <div class="d-grid">
-      <button class="btn btn-primary g-recaptcha" type="submit" data-sitekey="6Le1YXcaAAAAAJUBph68GZrG5BQsWhuyn07ScrO2"
-              data-callback='onSubmit'
-              data-action='login_{{ app.environment }}'>{% trans %}Sign in{% endtrans %}</button>
-    </div>
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    <br/>
-    <a href="{{ path('app_forgot_password_request') }}">{% trans %}Forgot password{% endtrans %}</a>
-  </form>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" name="_remember_me"> {% trans %}Remember me{% endtrans %}
+    </label>
+  </div>
 
+  <button class="w-100 btn btn-lg btn-primary g-recaptcha" type="submit" data-sitekey="6Le1YXcaAAAAAJUBph68GZrG5BQsWhuyn07ScrO2"
+    data-callback='onSubmit'
+    data-action='login_{{ app.environment }}'>{% trans %}Sign in{% endtrans %}
+  </button>
+
+  <br/><br/>
+  <a href="{{ path('app_forgot_password_request') }}">{% trans %}Forgot password{% endtrans %}</a>
+</form>
 {% endblock %}
 
 {% block javascript %}
