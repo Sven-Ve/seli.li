@@ -19,7 +19,7 @@ class LinkListController extends _BaseController
   public function index(
     LinkRepository $linkRep,
     #[MapQueryParameter] int $page = 1,
-    #[MapQueryParameter('q')] string $query = null,
+    #[MapQueryParameter('q')] ?string $query = null,
   ): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
 

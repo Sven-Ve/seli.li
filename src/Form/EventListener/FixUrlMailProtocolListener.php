@@ -22,31 +22,31 @@ use Symfony\Component\Form\FormEvents;
  */
 class FixUrlMailProtocolListener implements EventSubscriberInterface
 {
-    private ?string $defaultProtocol;
+  private ?string $defaultProtocol;
 
-    /**
-     * @param string|null $defaultProtocol The URL scheme to add when there is none or null to not modify the data
-     */
-    public function __construct(?string $defaultProtocol = 'http')
-    {
-        $this->defaultProtocol = $defaultProtocol;
+  /**
+   * @param string|null $defaultProtocol The URL scheme to add when there is none or null to not modify the data
+   */
+  public function __construct(?string $defaultProtocol = 'http')
+  {
+    $this->defaultProtocol = $defaultProtocol;
+  }
+
+  public function onSubmit(FormEvent $event): void
+  {
+    $data = $event->getData();
+
+    if (str_starts_with($data, 'mailto:')) {
+      return;
     }
 
-    public function onSubmit(FormEvent $event): void
-    {
-        $data = $event->getData();
-
-        if (str_starts_with($data, 'mailto:')) {
-          return;
-        }
-
-        if ($this->defaultProtocol && $data && \is_string($data) && !preg_match('~^(?:[/.]|[\w+.-]+://|[^:/?@#]++@)~', $data)) {
-            $event->setData($this->defaultProtocol.'://'.$data);
-        }
+    if ($this->defaultProtocol && $data && \is_string($data) && !preg_match('~^(?:[/.]|[\w+.-]+://|[^:/?@#]++@)~', $data)) {
+      $event->setData($this->defaultProtocol . '://' . $data);
     }
+  }
 
-    public static function getSubscribedEvents(): array
-    {
-        return [FormEvents::SUBMIT => 'onSubmit'];
-    }
+  public static function getSubscribedEvents(): array
+  {
+    return [FormEvents::SUBMIT => 'onSubmit'];
+  }
 }

@@ -26,10 +26,10 @@ class LinkController extends _BaseController
     CategoryRepository $categoryRep,
     ParamsRepository $paramsRep,
     #[MapQueryParameter] int $page = 1,
-    #[MapQueryParameter] int $catId = null,
+    #[MapQueryParameter] ?int $catId = null,
     #[MapQueryParameter] string $sort = 'name',
     #[MapQueryParameter] string $sortDirection = 'asc',
-    #[MapQueryParameter('q')] string $query = null,
+    #[MapQueryParameter('q')] ?string $query = null,
   ): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
 

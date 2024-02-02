@@ -15,14 +15,12 @@ use App\Form\EventListener\FixUrlMailProtocolListener;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-
 class UrlMailType extends UrlType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        if (null !== $options['default_protocol']) {
-            $builder->addEventSubscriber(new FixUrlMailProtocolListener($options['default_protocol']));
-        }
+  public function buildForm(FormBuilderInterface $builder, array $options): void
+  {
+    if (null !== $options['default_protocol']) {
+      $builder->addEventSubscriber(new FixUrlMailProtocolListener($options['default_protocol']));
     }
-
+  }
 }

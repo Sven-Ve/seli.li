@@ -10,7 +10,7 @@
         "babdev/pagerfanta-bundle": "^4.4",
         "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.157",
+        "doctrine/orm": "^2.17",
         "karser/karser-recaptcha3-bundle": "^0.1.25",
         "pagerfanta/doctrine-orm-adapter": "^4.3",
         "pagerfanta/twig": "^4.3",
