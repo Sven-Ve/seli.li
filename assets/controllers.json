@@ -32,7 +32,7 @@
                 "fetch": "lazy"
             },
             "reload-content": {
-                "enabled": true,
+                "enabled": false,
                 "fetch": "lazy"
             },
             "modal": {

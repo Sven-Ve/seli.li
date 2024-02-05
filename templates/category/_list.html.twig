@@ -1,35 +1,40 @@
-<table class="table">
-  <thead>
-  <tr>
-    <th>{% trans %}Name{% endtrans %}</th>
-    <th>{% trans %}Default{% endtrans %}</th>
-    <th>{% trans %}Actions{% endtrans %}</th>
-  </tr>
-  </thead>
+<turbo-frame id="category-list" data-turbo-action="advance">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>{% trans %}Name{% endtrans %}</th>
+      <th>{% trans %}Default{% endtrans %}</th>
+      <th>{% trans %}Actions{% endtrans %}</th>
+    </tr>
+    </thead>
 
-  <tbody>
-  {% for category in categories %}
-    <tr>
-      <td>{{ category.name }}</td>
-      <td>
-        {% if category.defaultCategory %}
-          {% trans %}Yes{% endtrans %}
-        {% else %}
-          {% trans %}No{% endtrans %}
-          <span {{ stimulus_controller('default-category', { 'url': path('category_set_default', {'id': category.id} ) }) }}>
-								<a {{ stimulus_action('default-category', 'set') }} class='btn btn-sm btn-outline-primary'>{% trans %}Set as default{% endtrans %}</a>
-							</span>
-        {% endif %}
-      </td>
-      <td>
-        <a class='btn btn-sm btn-outline-info'
-           href="{{ path('category_edit', {'id': category.id}) }}">{% trans %}Edit{% endtrans %}</a>
-      </td>
-    </tr>
-  {% else %}
-    <tr>
-      <td colspan="3">no records found</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+    <tbody>
+    {% for category in categories %}
+      <tr>
+        <td>{{ category.name }}</td>
+        <td>
+          {% if category.defaultCategory %}
+            {% trans %}Yes{% endtrans %}
+          {% else %}
+            {% trans %}No{% endtrans %}
+            <a href="{{ path('category_set_default', {'id': category.id}) }}" 
+              class='btn btn-sm btn-outline-primary'
+              data-turbo-frame="category-list"
+            >
+              {% trans %}Set as default{% endtrans %}
+            </a>
+          {% endif %}
+        </td>
+        <td>
+          <a class='btn btn-sm btn-outline-info' data-turbo-frame="_top"
+            href="{{ path('category_edit', {'id': category.id}) }}">{% trans %}Edit{% endtrans %}</a>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="3">no records found</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</turbo-frame>

@@ -127,3 +127,7 @@
 ## Version 1.7.5
 *Fri, 02 Feb 2024 20:39:51 +0000*
 - switch to monolog, update symfony, add UrlMailFormType
+
+## Version 1.7.6
+*Mon, 05 Feb 2024 19:51:28 +0000*
+- reduce javascript, use more turbo

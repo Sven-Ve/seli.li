@@ -95,16 +95,16 @@ class CategoryController extends _BaseController
   }
 
   /**
-   * set the default category per ajax call.
+   * set the default category.
    */
   #[Route(path: '/setDefault/{id}', name: 'category_set_default', methods: ['GET', 'POST'])]
-  public function setDefault(Category $category, CategoryHelper $categoryHelper): Response
-  {
+  public function setDefault(
+    Category $category,
+    CategoryHelper $categoryHelper,
+  ): Response {
     $this->denyAccessUnlessGranted('ROLE_USER');
-    if ($categoryHelper->setDefault($category, $this->getUser())) {
-      return new Response(null, Response::HTTP_NO_CONTENT);
-    } else {
-      return new Response(null, Response::HTTP_UNPROCESSABLE_ENTITY);
-    }
+    $categoryHelper->setDefault($category, $this->getUser());
+
+    return $this->redirectToRoute('category_index');
   }
 }
