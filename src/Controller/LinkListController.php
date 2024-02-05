@@ -10,7 +10,7 @@ use Pagerfanta\Pagerfanta;
 use Svc\LogBundle\Service\EventLog;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/l/')]
 class LinkListController extends _BaseController

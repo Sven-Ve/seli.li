@@ -6,7 +6,7 @@ use App\Entity\User;
 use App\Service\AppConstants;
 use Svc\LogBundle\Service\EventLog;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class ImpersonationController extends _BaseController
 {
