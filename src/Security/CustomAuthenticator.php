@@ -66,7 +66,8 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
 
   public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
   {
-    $this->eventLog->log(0, AppConstants::LOG_TYPE_LOGIN_FAILED, ['level' => $this->eventLog::LEVEL_ERROR, 'message' => 'Login failed (email="' . $request->request->get('email', '') . '")']);
+    $this->eventLog->log(0, AppConstants::LOG_TYPE_LOGIN_FAILED, ['level' => $this->eventLog::LEVEL_ERROR,
+      'message' => 'Login failed (email="' . $request->request->get('email', '') . '") - ' . $exception->getMessage()]);
 
     return parent::onAuthenticationFailure($request, $exception);
   }
@@ -91,9 +92,9 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
     $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
 
     if (!$resp->isSuccess()) {
-      if ($_ENV['APP_ENV'] == 'dev') {
-        return true;
-      }
+      // if ($_ENV['APP_ENV'] == 'dev') {
+      //   return true;
+      // }
 
       $errors = $resp->getErrorCodes();
       throw new CustomUserMessageAuthenticationException('Are you human? If yes, please contact our admin. Error: ' . implode('- ', $errors));
