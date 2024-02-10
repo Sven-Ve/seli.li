@@ -131,3 +131,7 @@
 ## Version 1.7.6
 *Mon, 05 Feb 2024 19:51:28 +0000*
 - reduce javascript, use more turbo
+
+## Version 1.7.7
+*Sat, 10 Feb 2024 19:18:20 +0000*
+- add errortext to logging

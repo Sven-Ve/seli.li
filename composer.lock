@@ -3675,16 +3675,16 @@
         },
         {
             "name": "svc/log-bundle",
-            "version": "5.3.0",
+            "version": "5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sven-Ve/svc-log-bundle.git",
-                "reference": "276a859cdb58dc8da0869c5819b3e6749b88cb24"
+                "reference": "f36796b8cf93a1e9568485e3b7503e8fbd6f15f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sven-Ve/svc-log-bundle/zipball/276a859cdb58dc8da0869c5819b3e6749b88cb24",
-                "reference": "276a859cdb58dc8da0869c5819b3e6749b88cb24",
+                "url": "https://api.github.com/repos/Sven-Ve/svc-log-bundle/zipball/f36796b8cf93a1e9568485e3b7503e8fbd6f15f0",
+                "reference": "f36796b8cf93a1e9568485e3b7503e8fbd6f15f0",
                 "shasum": ""
             },
             "require": {
@@ -3737,9 +3737,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Sven-Ve/svc-log-bundle/issues",
-                "source": "https://github.com/Sven-Ve/svc-log-bundle/tree/5.3.0"
+                "source": "https://github.com/Sven-Ve/svc-log-bundle/tree/5.4.0"
             },
-            "time": "2024-02-03T21:24:58+00:00"
+            "time": "2024-02-10T19:11:39+00:00"
         },
         {
             "name": "svc/param-bundle",
@@ -10134,16 +10134,16 @@
         },
         {
             "name": "phpstan/phpstan-doctrine",
-            "version": "1.3.60",
+            "version": "1.3.61",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-doctrine.git",
-                "reference": "30cf38dda057a78180c4df1f6f41e33eb49c4eca"
+                "reference": "f3f1dae3551ce4b10f5e2fb2c24e3004e6c34fe1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-doctrine/zipball/30cf38dda057a78180c4df1f6f41e33eb49c4eca",
-                "reference": "30cf38dda057a78180c4df1f6f41e33eb49c4eca",
+                "url": "https://api.github.com/repos/phpstan/phpstan-doctrine/zipball/f3f1dae3551ce4b10f5e2fb2c24e3004e6c34fe1",
+                "reference": "f3f1dae3551ce4b10f5e2fb2c24e3004e6c34fe1",
                 "shasum": ""
             },
             "require": {
@@ -10160,6 +10160,7 @@
             "require-dev": {
                 "cache/array-adapter": "^1.1",
                 "composer/semver": "^3.3.2",
+                "cweagans/composer-patches": "^1.7.3",
                 "doctrine/annotations": "^1.11 || ^2.0",
                 "doctrine/collections": "^1.6 || ^2.1",
                 "doctrine/common": "^2.7 || ^3.0",
@@ -10199,9 +10200,9 @@
             "description": "Doctrine extensions for PHPStan",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-doctrine/issues",
-                "source": "https://github.com/phpstan/phpstan-doctrine/tree/1.3.60"
+                "source": "https://github.com/phpstan/phpstan-doctrine/tree/1.3.61"
             },
-            "time": "2024-02-08T09:33:18+00:00"
+            "time": "2024-02-09T13:43:08+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -10528,16 +10529,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.0.2",
+            "version": "11.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2f281e7e6776aea920cab5fc5a48d0fefbe1f39e"
+                "reference": "de24e7e7c67fbf437f7b6cd7bc919f2dc6fd89d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2f281e7e6776aea920cab5fc5a48d0fefbe1f39e",
-                "reference": "2f281e7e6776aea920cab5fc5a48d0fefbe1f39e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/de24e7e7c67fbf437f7b6cd7bc919f2dc6fd89d4",
+                "reference": "de24e7e7c67fbf437f7b6cd7bc919f2dc6fd89d4",
                 "shasum": ""
             },
             "require": {
@@ -10608,7 +10609,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.0.2"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.0.3"
             },
             "funding": [
                 {
@@ -10624,7 +10625,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-04T09:09:14+00:00"
+            "time": "2024-02-10T06:31:16+00:00"
         },
         {
             "name": "sebastian/cli-parser",
