@@ -10,16 +10,16 @@
         "babdev/pagerfanta-bundle": "^4.4",
         "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.17",
+        "doctrine/orm": "^3.1",
         "karser/karser-recaptcha3-bundle": "^0.1.25",
         "pagerfanta/doctrine-orm-adapter": "^4.3",
         "pagerfanta/twig": "^4.3",
         "phpoffice/phpspreadsheet": "^2",
         "svc/avatar-bundle": "^5.0",
         "svc/contactform-bundle": "^5.1",
-        "svc/log-bundle": "^5.2",
-        "svc/profile-bundle": "^6.0",
-        "svc/totp-bundle": "^5",
+        "svc/log-bundle": "^5.5",
+        "svc/profile-bundle": "^6.1",
+        "svc/totp-bundle": "^5.1",
         "svc/util-bundle": "^5.3",
         "symfony/asset": "7.0.*",
         "symfony/asset-mapper": "7.0.*",
@@ -38,12 +38,12 @@
         "symfony/security-csrf": "7.0.*",
         "symfony/stimulus-bundle": "^2.14",
         "symfony/twig-bundle": "7.0.*",
-        "symfony/ux-autocomplete": "^2.14",
-        "symfony/ux-toggle-password": "^2.14",
-        "symfony/ux-turbo": "^2.14",
+        "symfony/ux-autocomplete": "^2.16",
+        "symfony/ux-toggle-password": "^2.16",
+        "symfony/ux-turbo": "^2.16",
         "symfony/validator": "7.0.*",
         "symfony/yaml": "7.0.*",
-        "symfonycasts/reset-password-bundle": "^1.20",
+        "symfonycasts/reset-password-bundle": "^1.21",
         "symfonycasts/verify-email-bundle": "^1.16",
         "twig/extra-bundle": "^3.8"
     },
@@ -93,7 +93,7 @@
             "@auto-scripts"
         ],
         "phpstan": "php -d memory_limit=-1 vendor/bin/phpstan analyse src/ --level 5 -c .phpstan.neon",
-        "test": "bin/console --env test doctrine:database:create; bin/console --env test doctrine:schema:update --force --complete; bin/console --env=test doctrine:fixtures:load --no-interaction; php bin/phpunit --testdox"
+        "test": "bin/console --env test doctrine:schema:update --force --complete; bin/console --env=test doctrine:fixtures:load --no-interaction; php bin/phpunit --testdox"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -115,7 +115,7 @@
         "symfony/browser-kit": "7.0.*",
         "symfony/css-selector": "7.0.*",
         "symfony/debug-bundle": "7.0.*",
-        "symfony/maker-bundle": "^1.53",
+        "symfony/maker-bundle": "^1.56",
         "symfony/phpunit-bridge": "7.0.*",
         "symfony/stopwatch": "7.0.*",
         "symfony/web-profiler-bundle": "7.0.*"
