@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RegisterPageTest extends WebTestCase
 {
-  private ParamsRepository|null $paramRep;
+  private ?ParamsRepository $paramRep;
 
   private KernelBrowser $client;
 

@@ -1,4 +1,11 @@
 parameters:
+    level: 5
+    paths:
+        - bin/
+        - config/
+        - public/
+        - src/
+        - tests/
     ignoreErrors:
         - '#Call to an undefined method Symfony\\Component\\Security\\Core\\User\\UserInterface.*#'
         - '#Parameter .* expects App\\Entity\\User, .* given.#'

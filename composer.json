@@ -8,10 +8,10 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "babdev/pagerfanta-bundle": "^4.4",
-        "doctrine/doctrine-bundle": "^2.11",
-        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/doctrine-bundle": "^2.12",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.1",
-        "karser/karser-recaptcha3-bundle": "^0.1.25",
+        "karser/karser-recaptcha3-bundle": "^0.1.26",
         "pagerfanta/doctrine-orm-adapter": "^4.3",
         "pagerfanta/twig": "^4.3",
         "phpoffice/phpspreadsheet": "^2",
@@ -36,7 +36,7 @@
         "symfony/runtime": "7.0.*",
         "symfony/security-bundle": "7.0.*",
         "symfony/security-csrf": "7.0.*",
-        "symfony/stimulus-bundle": "^2.14",
+        "symfony/stimulus-bundle": "^2.16",
         "symfony/twig-bundle": "7.0.*",
         "symfony/ux-autocomplete": "^2.16",
         "symfony/ux-toggle-password": "^2.16",
@@ -44,7 +44,7 @@
         "symfony/validator": "7.0.*",
         "symfony/yaml": "7.0.*",
         "symfonycasts/reset-password-bundle": "^1.21",
-        "symfonycasts/verify-email-bundle": "^1.16",
+        "symfonycasts/verify-email-bundle": "^1.17",
         "twig/extra-bundle": "^3.8"
     },
     "config": {
@@ -92,7 +92,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "phpstan": "php -d memory_limit=-1 vendor/bin/phpstan analyse src/ --level 5 -c .phpstan.neon",
+        "phpstan": "php -d memory_limit=-1 vendor/bin/phpstan analyse -c .phpstan.neon",
         "test": "bin/console --env test doctrine:schema:update --force --complete; bin/console --env=test doctrine:fixtures:load --no-interaction; php bin/phpunit --testdox"
     },
     "conflict": {

@@ -50,7 +50,7 @@ class MFATest extends TestCase
     $user->setTotpSecret('abcdefg');
     $this->assertTrue($user->addBackUpCode('123456'));
 
-    $this->assertTrue($user->enableTotpAuthentication(), true);
+    $this->assertTrue($user->enableTotpAuthentication());
 
     $this->assertTrue($user->isTotpSecret());
     $this->assertTrue($user->isTotpAuthenticationEnabled());

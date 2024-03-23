@@ -135,3 +135,7 @@
 ## Version 1.7.7
 *Sat, 10 Feb 2024 19:18:20 +0000*
 - add errortext to logging
+
+## Version 1.7.8
+*Sat, 23 Mar 2024 19:29:17 +0000*
+- update to symfony 7.0.5
