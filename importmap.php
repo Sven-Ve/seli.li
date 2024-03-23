@@ -16,11 +16,11 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-    '@hotwired/stimulus' => [
-        'version' => '3.2.2',
-    ],
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
+    ],
+    '@hotwired/stimulus' => [
+        'version' => '3.2.2',
     ],
     'tom-select' => [
         'version' => '2.3.1',
@@ -41,7 +41,7 @@ return [
         'type' => 'css',
     ],
     '@hotwired/turbo' => [
-        'version' => '7.3.0',
+        'version' => '8.0.4',
     ],
     'debounce' => [
         'version' => '2.0.0',
@@ -51,7 +51,7 @@ return [
         'type' => 'css',
     ],
     '@ckeditor/ckeditor5-build-classic' => [
-        'version' => '41.2.0',
+        'version' => '41.2.1',
     ],
     'bootstrap' => [
         'version' => '5.3.3',
@@ -61,6 +61,6 @@ return [
         'type' => 'css',
     ],
     'sweetalert2' => [
-        'version' => '11.10.6',
+        'version' => '11.10.7',
     ],
 ];
